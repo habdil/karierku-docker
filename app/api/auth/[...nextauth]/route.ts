@@ -1,27 +1,22 @@
 // app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
-import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { Adapter } from "next-auth/adapters";
 import prisma from "@/lib/prisma";
+import type { NextAuthOptions } from "next-auth";
+import { createClientSession } from "@/lib/auth";
+import { authOptions } from "@/lib/auth/nextauth-options";
 
-interface CreateUserData {
-  name?: string | null;
-  email?: string | null;
-  image?: string | null;
-  emailVerified?: Date | null;
-}
-
-export const authOptions: NextAuthOptions = {
+// Move options to separate file to avoid route export issues
+const options: NextAuthOptions = {
   adapter: {
     ...PrismaAdapter(prisma),
-    createUser: async (data: CreateUserData) => {
+    createUser: async (data: any) => {
       const username = data.email?.split('@')[0] || 
                       data.name?.toLowerCase().replace(/\s+/g, '') || 
                       `user${Date.now()}`;
-                      
-      return prisma.user.create({
+      
+      const user = await prisma.user.create({
         data: {
           name: data.name,
           email: data.email!,
@@ -29,6 +24,7 @@ export const authOptions: NextAuthOptions = {
           emailVerified: data.emailVerified,
           username,
           role: "CLIENT",
+          password: null,
           client: {
             create: {
               fullName: data.name || username,
@@ -37,55 +33,62 @@ export const authOptions: NextAuthOptions = {
             }
           }
         },
+        include: { client: true }
       });
+
+      await createClientSession({
+        id: user.id,
+        email: user.email,
+        role: "CLIENT",
+        clientId: user.client!.id,
+        fullName: user.client!.fullName,
+        permissions: ["client.access"]
+      });
+
+      return user;
     }
-  } as Adapter,
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      profile(profile) {
-        const username = profile.email.split('@')[0] || 
-                        profile.name?.toLowerCase().replace(/\s+/g, '') || 
-                        `user${Date.now()}`;
-                        
-        return {
-          id: profile.sub,
-          name: profile.name,
-          email: profile.email,
-          image: profile.picture,
-          username,
-          role: "CLIENT" as const,
+      authorization: {
+        params: {
+          prompt: "select_account",
+          access_type: "offline",
+          response_type: "code"
         }
       }
     }),
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      try {
-        if (account?.provider === "google") {
+      if (account?.provider === "google") {
+        try {
           const existingUser = await prisma.user.findUnique({
             where: { email: user.email! },
             include: { client: true }
           });
 
-          if (!existingUser) {
-            // User will be created by the adapter
-            return true;
+          if (existingUser) {
+            await createClientSession({
+              id: existingUser.id,
+              email: existingUser.email,
+              role: "CLIENT",
+              clientId: existingUser.client!.id,
+              fullName: existingUser.client!.fullName,
+              permissions: ["client.access"]
+            });
           }
-
-          // Update session data for existing user
-          user.role = existingUser.role;
-          user.id = existingUser.id;
           return true;
+        } catch (error) {
+          console.error("SignIn error:", error);
+          return false;
         }
-        return false;
-      } catch (error) {
-        console.error("SignIn error:", error);
-        return false;
       }
+      return false;
     },
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
         token.userId = user.id;
@@ -102,7 +105,7 @@ export const authOptions: NextAuthOptions = {
     async redirect({ url, baseUrl }) {
       if (url.startsWith(baseUrl)) return url;
       else if (url.startsWith("/")) return `${baseUrl}${url}`;
-      return baseUrl + "/dashboard";
+      return baseUrl + "/dashboard-client";
     }
   },
   pages: {
@@ -112,10 +115,13 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60,
   },
   debug: process.env.NODE_ENV === "development",
 };
 
+// Create handler
 const handler = NextAuth(authOptions);
+
+// Export as route handlers
 export { handler as GET, handler as POST };

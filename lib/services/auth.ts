@@ -19,6 +19,9 @@ export async function authenticateAdmin(credentials: LoginCredentials) {
   }
 
   // Verifikasi password
+  if (!user.password) {
+    throw new Error('Invalid credentials');
+  }
   const isValid = await verifyPassword(credentials.password, user.password);
   if (!isValid) {
     throw new Error('Invalid credentials');

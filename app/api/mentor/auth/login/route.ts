@@ -43,6 +43,15 @@ export async function POST(request: Request) {
     }
 
     // Verifikasi password
+    if (!user.password) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: "Invalid credentials" 
+        }, 
+        { status: 401 }
+      );
+    }
     const isPasswordValid = await compare(password, user.password);
     if (!isPasswordValid) {
       return NextResponse.json(

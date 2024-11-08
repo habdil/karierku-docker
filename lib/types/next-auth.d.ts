@@ -27,13 +27,3 @@ declare module "next-auth/jwt" {
     username: string;
   }
 }
-
-// Add this if you need to type the Google profile
-declare module "next-auth/providers/google" {
-  interface GoogleProfile {
-    sub: string;
-    name: string;
-    email: string;
-    picture: string;
-  }
-}
