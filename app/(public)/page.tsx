@@ -4,6 +4,7 @@ import { ArrowRight, Building2, CalendarIcon, GraduationCap, Users } from "lucid
 import { Button } from "@/components/ui/button";
 import { UpcomingEvents } from "@/components/public/UpcomingEvents";
 import HeroSection from "@/components/public/HeroSection";
+import { AuthDialog } from "@/components/client/AuthDialog";
 
 export default function Home() {
   return (
@@ -76,16 +77,15 @@ export default function Home() {
             <p className="mt-4 text-lg text-white/90">
               Bergabunglah sekarang dan temukan potensi terbaikmu
             </p>
+            <AuthDialog mode="register">
             <Button
               size="lg"
-              className="mt-8 bg-white text-secondary-600 hover:bg-white/90"
-              asChild
+              className="mt-8 bg-white text-secondary-600 hover:bg-white/90 group"
             >
-              <Link href="/register" className="group">
-                Daftar Sekarang
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+              Daftar Sekarang
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
+          </AuthDialog>
           </div>
         </div>
       </section>
