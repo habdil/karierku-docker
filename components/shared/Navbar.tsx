@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AuthDialog } from "../client/AuthDialog";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
 
   const navItems = [
     { name: "Beranda", href: "/" },
@@ -17,13 +16,6 @@ const Navbar = () => {
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
-
-  const isActive = (path: string) => {
-    if (path === "/" && pathname !== "/") {
-      return false;
-    }
-    return pathname.startsWith(path);
-  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -49,32 +41,26 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm font-medium transition-colors hover:text-black group py-2
-                  ${isActive(item.href) 
-                    ? "text-black" 
-                    : "text-muted-foreground"
-                  }`}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
                 {item.name}
-                <span
-                  className={`absolute inset-x-0 bottom-0 h-0.5 transition-all duration-200 ease-out transform
-                    ${isActive(item.href)
-                      ? "bg-orange-500 scale-x-100"
-                      : "bg-orange-500 scale-x-0 group-hover:scale-x-100"
-                    }`}
-                />
               </Link>
             ))}
           </div>
 
           {/* Login Button */}
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <Button variant="ghost" asChild>
-              <Link href="/login">Log in</Link>
+          <AuthDialog mode="login">
+            <Button variant="ghost">
+              Log in
             </Button>
-            <Button className="text-gray-50 bg-primary-600 hover:bg-primary-700" asChild>
-              <Link href="/register">Sign up</Link>
+          </AuthDialog>
+          
+          <AuthDialog mode="register">
+            <Button className="text-gray-50 bg-primary-600 hover:bg-primary-700">
+              Sign up
             </Button>
+          </AuthDialog>
           </div>
 
           {/* Mobile menu button */}
@@ -102,26 +88,24 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-2 text-base font-medium rounded-md relative
-                  ${isActive(item.href)
-                    ? "text-black bg-primary-50"
-                    : "text-muted-foreground hover:text-black hover:bg-primary-50"
-                  }`}
+                className="block px-3 py-2 text-base font-medium text-muted-foreground hover:text-primary hover:bg-primary-50 rounded-md"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
-                {isActive(item.href) && (
-                  <span className="absolute inset-y-0 left-0 w-1 bg-orange-500 rounded-r" />
-                )}
               </Link>
             ))}
             <div className="grid gap-2 px-3 py-2">
-              <Button variant="ghost" className="w-full justify-center bg-gray-100" asChild>
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button className="w-full bg-primary-600 hover:bg-primary-700 text-white" asChild>
-                <Link href="/register">Sign up</Link>
-              </Button>
+            <AuthDialog mode="login">
+            <Button variant="ghost">
+              Log in
+            </Button>
+          </AuthDialog>
+          
+          <AuthDialog mode="register">
+            <Button className="text-gray-50 bg-primary-600 hover:bg-primary-700">
+              Sign up
+            </Button>
+          </AuthDialog>
             </div>
           </div>
         </div>

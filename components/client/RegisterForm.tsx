@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Eye, EyeOff, Loader2 } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -13,6 +12,10 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { GoogleAuthButton } from "@/components/client/LoginGoogle";
 
+interface RegisterFormProps {
+  onLoginClick?: () => void;  // Untuk beralih ke form login
+  onSuccess?: () => void;     // Untuk menutup modal setelah berhasil
+}
 
 // Form Schema
 const registerSchema = z.object({
@@ -35,7 +38,7 @@ const registerSchema = z.object({
 
 type RegisterForm = z.infer<typeof registerSchema>;
 
-export default function RegisterPage() {
+export function RegisterForm({ onLoginClick, onSuccess }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -64,9 +67,8 @@ export default function RegisterPage() {
         body: JSON.stringify({
           email: values.email,
           password: values.password,
-          username: `${values.firstName.toLowerCase()}${Math.floor(Math.random() * 1000)}`, // Generate simple username
+          username: `${values.firstName.toLowerCase()}${Math.floor(Math.random() * 1000)}`,
           fullName: `${values.firstName} ${values.lastName}`,
-          // Optional fields can be added here
           interests: [],
           hobbies: [],
           currentStatus: "Mencari Kerja",
@@ -81,11 +83,18 @@ export default function RegisterPage() {
 
       toast({
         title: "Registration successful",
-        description: "Your account has been created successfully.",
+        description: "Your account has been created successfully. Please login again",
       });
 
-      // Redirect to login page
-      router.push("/login");
+      // Panggil onSuccess untuk menutup modal
+      if (onSuccess) {
+        onSuccess();
+      }
+
+      // Tidak perlu redirect karena kita menggunakan modal
+      if (onLoginClick) {
+        onLoginClick(); // Beralih ke form login
+      }
 
     } catch (error) {
       console.error("Registration error:", error);
@@ -100,7 +109,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 space-y-8">
+    <div className="p-6 space-y-6">
       {/* Logo & Title */}
       <div className="space-y-2 text-center">
         <Image
@@ -117,80 +126,78 @@ export default function RegisterPage() {
       </div>
 
       {/* Register Form */}
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-primary-900">First Name</label>
-              <Input 
-                placeholder="John"
-                {...form.register("firstName")}
-                disabled={isLoading}
-              />
-              {form.formState.errors.firstName && (
-                <p className="text-sm text-red-500">
-                  {form.formState.errors.firstName.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-primary-900">Last Name</label>
-              <Input 
-                placeholder="Doe"
-                {...form.register("lastName")}
-                disabled={isLoading}
-              />
-              {form.formState.errors.lastName && (
-                <p className="text-sm text-red-500">
-                  {form.formState.errors.lastName.message}
-                </p>
-              )}
-            </div>
-          </div>
-
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-primary-900">Email</label>
+            <label className="text-sm font-medium text-primary-900">First Name</label>
             <Input 
-              type="email" 
-              placeholder="john@example.com"
-              {...form.register("email")}
+              placeholder="John"
+              {...form.register("firstName")}
               disabled={isLoading}
             />
-            {form.formState.errors.email && (
+            {form.formState.errors.firstName && (
               <p className="text-sm text-red-500">
-                {form.formState.errors.email.message}
+                {form.formState.errors.firstName.message}
               </p>
             )}
           </div>
-
           <div className="space-y-2">
-            <label className="text-sm font-medium text-primary-900">Password</label>
-            <div className="relative">
-              <Input
-                type={showPassword ? "text" : "password"}
-                placeholder="Create a password"
-                className="pr-10"
-                {...form.register("password")}
-                disabled={isLoading}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary-600 transition-colors"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4" />
-                ) : (
-                  <Eye className="h-4 w-4" />
-                )}
-              </button>
-            </div>
-            {form.formState.errors.password && (
+            <label className="text-sm font-medium text-primary-900">Last Name</label>
+            <Input 
+              placeholder="Doe"
+              {...form.register("lastName")}
+              disabled={isLoading}
+            />
+            {form.formState.errors.lastName && (
               <p className="text-sm text-red-500">
-                {form.formState.errors.password.message}
+                {form.formState.errors.lastName.message}
               </p>
             )}
           </div>
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-primary-900">Email</label>
+          <Input 
+            type="email" 
+            placeholder="john@example.com"
+            {...form.register("email")}
+            disabled={isLoading}
+          />
+          {form.formState.errors.email && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.email.message}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-primary-900">Password</label>
+          <div className="relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="Create a password"
+              className="pr-10"
+              {...form.register("password")}
+              disabled={isLoading}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary-600 transition-colors"
+            >
+              {showPassword ? (
+                <EyeOff className="h-4 w-4" />
+              ) : (
+                <Eye className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+          {form.formState.errors.password && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.password.message}
+            </p>
+          )}
         </div>
 
         <div className="flex items-start space-x-2">
@@ -202,18 +209,11 @@ export default function RegisterPage() {
             disabled={isLoading}
           />
           <label htmlFor="terms" className="text-sm text-muted-foreground">
-            I agree to the{" "}
-            <Link href="/terms" className="text-secondary-600 hover:text-secondary-700 transition-colors">
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link href="/privacy" className="text-secondary-600 hover:text-secondary-700 transition-colors">
-              Privacy Policy
-            </Link>
+            I agree to the Terms of Service and Privacy Policy
           </label>
         </div>
         {form.formState.errors.terms && (
-          <p className="text-sm text-red-500 mt-1">
+          <p className="text-sm text-red-500">
             {form.formState.errors.terms.message}
           </p>
         )}
@@ -234,7 +234,6 @@ export default function RegisterPage() {
         </Button>
       </form>
 
-      {/* Social Registration */}
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-gray-200" />
@@ -248,34 +247,22 @@ export default function RegisterPage() {
 
       <div className="grid gap-4">
         <GoogleAuthButton 
-          mode="login" // atau "register" untuk halaman register
-          isLoading={isLoading} // state loading dari parent component
+          mode="register"
+          isLoading={isLoading}
         />
       </div>
 
-      {/* Login and Home Links */}
-      <div className="text-center space-y-4">
-      <p className="text-sm text-muted-foreground">
-        Already have an account?{" "}
-        <Link 
-          href="/login" 
-          className="font-medium text-secondary-600 hover:text-secondary-700 hover:underline transition-all"
-        >
-          Sign in
-        </Link>
-      </p>
-      
-      <div className="flex items-center justify-center gap-2">
-        <div className="h-px w-12 bg-gray-200"></div>
-        <Link 
-          href="/" 
-          className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary-600 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
-        <div className="h-px w-12 bg-gray-200"></div>
-      </div>
+      <div className="text-center">
+        <p className="text-sm text-muted-foreground">
+          Already have an account?{" "}
+          <button
+            type="button"
+            onClick={onLoginClick}
+            className="font-medium text-secondary-600 hover:text-secondary-700 hover:underline transition-colors"
+          >
+            Sign in
+          </button>
+        </p>
       </div>
     </div>
   );

@@ -100,7 +100,7 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
         description: "Sampai jumpa kembali!",
       });
 
-      window.location.href = "/login";
+      window.location.href = "/";
       
     } catch (error) {
       console.error("Logout error:", error);

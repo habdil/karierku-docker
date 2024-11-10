@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,11 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { signIn } from "next-auth/react";
+
+interface LoginFormProps {
+  onRegisterClick?: () => void;  // Untuk beralih ke form register
+  onSuccess?: () => void;        // Untuk menutup modal setelah berhasil
+}
 
 // Form Schema
 const loginSchema = z.object({
@@ -26,7 +30,7 @@ const loginSchema = z.object({
 
 type LoginForm = z.infer<typeof loginSchema>;
 
-export function LoginForm() {
+export function LoginForm({ onRegisterClick, onSuccess }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -79,6 +83,11 @@ export function LoginForm() {
         description: "Welcome back!",
       });
 
+      // Memanggil onSuccess untuk menutup modal
+      if (onSuccess) {
+        onSuccess();
+      }
+
       router.push("/dashboard");
       router.refresh();
 
@@ -95,7 +104,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-8 space-y-8">
+    <div className="p-6 space-y-6">
       {/* Logo & Title */}
       <div className="space-y-2 text-center">
         <Image
@@ -112,51 +121,49 @@ export function LoginForm() {
       </div>
 
       {/* Login Form */}
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-primary-900">Email</label>
-            <Input 
-              type="email"
-              placeholder="Enter your email"
-              {...form.register("email")}
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-primary-900">Email</label>
+          <Input 
+            type="email"
+            placeholder="Enter your email"
+            {...form.register("email")}
+            disabled={isLoading}
+          />
+          {form.formState.errors.email && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.email.message}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-primary-900">Password</label>
+          <div className="relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              className="pr-10"
+              {...form.register("password")}
               disabled={isLoading}
             />
-            {form.formState.errors.email && (
-              <p className="text-sm text-red-500">
-                {form.formState.errors.email.message}
-              </p>
-            )}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600"
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5" />
+              ) : (
+                <Eye className="h-5 w-5" />
+              )}
+            </button>
           </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-primary-900">Password</label>
-            <div className="relative">
-              <Input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                className="pr-10"
-                {...form.register("password")}
-                disabled={isLoading}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600"
-              >
-                {showPassword ? (
-                  <EyeOff className="h-5 w-5" />
-                ) : (
-                  <Eye className="h-5 w-5" />
-                )}
-              </button>
-            </div>
-            {form.formState.errors.password && (
-              <p className="text-sm text-red-500">
-                {form.formState.errors.password.message}
-              </p>
-            )}
-          </div>
+          {form.formState.errors.password && (
+            <p className="text-sm text-red-500">
+              {form.formState.errors.password.message}
+            </p>
+          )}
         </div>
 
         <div className="flex items-center justify-between text-sm">
@@ -209,46 +216,35 @@ export function LoginForm() {
       </div>
 
       <div className="grid gap-4">
-            <Button 
-                variant="outline" 
-                className="h-11" 
-                onClick={handleGoogleLogin}
-                disabled={isLoading}
+        <Button 
+          variant="outline" 
+          className="h-11" 
+          onClick={handleGoogleLogin}
+          disabled={isLoading}
         >
           <Image
-                src="/images/google.png"
-                alt="Google"
-                width={20}
-                height={20}
-                className="mr-2"
+            src="/images/google.png"
+            alt="Google"
+            width={20}
+            height={20}
+            className="mr-2"
           />
           Continue with Google
         </Button>
       </div>
 
-      {/* Sign Up and Home Links */}
-      <div className="text-center space-y-4">
-      <p className="text-sm text-muted-foreground">
-        Don't have an account?{" "}
-        <Link 
-          href="/register" 
-          className="font-medium text-secondary-600 hover:text-secondary-700 hover:underline transition-all"
-        >
-          Sign up
-        </Link>
-      </p>
-      
-      <div className="flex items-center justify-center gap-2">
-        <div className="h-px w-12 bg-gray-200"></div>
-        <Link 
-          href="/" 
-          className="group flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary-600 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" />
-          Back to Home
-        </Link>
-        <div className="h-px w-12 bg-gray-200"></div>
-      </div>
+      {/* Sign Up Link */}
+      <div className="text-center">
+        <p className="text-sm text-muted-foreground">
+          Don't have an account?{" "}
+          <button
+            type="button"
+            onClick={onRegisterClick}
+            className="font-medium text-secondary-600 hover:text-secondary-700 hover:underline transition-all"
+          >
+            Sign up
+          </button>
+        </p>
       </div>
     </div>
   );

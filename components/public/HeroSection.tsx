@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { AuthDialog } from '../client/AuthDialog';
 
 const HeroSection = () => {
   const images = [
@@ -67,13 +68,14 @@ const HeroSection = () => {
 
               {/* CTA Buttons - Improved mobile layout */}
               <div className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white"
-                  asChild
-                >
-                  <Link href="/register">Mulai Sekarang</Link>
-                </Button>
+                <AuthDialog mode="register">
+                  <Button 
+                    size="lg"
+                    className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white"
+                  >
+                    Mulai Sekarang
+                  </Button>
+                </AuthDialog>
                 <Button 
                   size="lg" 
                   variant="outline" 
