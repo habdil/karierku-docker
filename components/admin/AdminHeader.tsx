@@ -48,7 +48,7 @@ export function AdminHeader({ user }: AdminHeaderProps) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/images/admin-avatar.png" alt="Admin" />
+                  <AvatarImage alt="Admin" />
                   <AvatarFallback>AD</AvatarFallback>
                 </Avatar>
               </Button>

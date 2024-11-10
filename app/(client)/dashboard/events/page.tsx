@@ -1,9 +1,9 @@
-// app/(client)/dashboard/events/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { EventList } from "@/components/client/events/EventList";
 import { useToast } from "@/hooks/use-toast";
+import { LoadingBars } from "@/components/ui/loading-bars";
 
 interface Event {
   id: string;
@@ -58,6 +58,14 @@ export default function EventsClient() {
     );
     setFilteredEvents(filtered);
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <LoadingBars text="Mengunduh data..." />
+      </div>
+    );
+  }
 
   return (
     <div className="p-6">

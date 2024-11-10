@@ -11,6 +11,8 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { GoogleAuthButton } from "@/components/client/LoginGoogle";
+
 
 // Form Schema
 const registerSchema = z.object({
@@ -245,16 +247,10 @@ export default function RegisterPage() {
       </div>
 
       <div className="grid gap-4">
-        <Button variant="outline" disabled={isLoading}>
-          <Image
-            src="/images/google.png"
-            alt="Google"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-          Google
-        </Button>
+        <GoogleAuthButton 
+          mode="login" // atau "register" untuk halaman register
+          isLoading={isLoading} // state loading dari parent component
+        />
       </div>
 
       {/* Login and Home Links */}

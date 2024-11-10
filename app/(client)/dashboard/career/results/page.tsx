@@ -2,27 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Loader2, Star, Briefcase,
-  GraduationCap,
-  Target,
-  Lightbulb,
-  Code2,
-  MessageSquare,
-  Brain,
-  Users,
-  Cpu,
-  Clock,
-  ChevronRight,
-  Wrench,
-  Info} from "lucide-react";
 import { MentorList } from "@/components/client/mentor/MentorList";
+import { LoadingBars } from "@/components/ui/loading-bars";
 
 type Assessment = {
   id: string;
@@ -91,8 +74,8 @@ export default function CareerAssessmentResults() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin" />
+      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <LoadingBars text="Menampilkan hasil..." />
       </div>
     );
   }

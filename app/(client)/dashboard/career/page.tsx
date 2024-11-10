@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loading } from "@/components/ui/loading";
 import CareerPersonalizationForm from "@/components/client/personalisasi/Personalisasi";
+import { LoadingBars } from "@/components/ui/loading-bars";
 
 export default function CareerPersonalizationPage() {
   const router = useRouter();
@@ -39,22 +40,28 @@ export default function CareerPersonalizationPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="w-8 h-8 animate-spin" />
+      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <LoadingBars text="Mengunduh data..." />
       </div>
     );
   }
 
   if (hasAssessment) {
-    return null; // Tidak perlu render apapun karena akan redirect
+    return (
+      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <LoadingBars text="Mengunduh data..." />
+      </div>
+    );
   }
 
   return (
     <div className="container mx-auto py-8">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-3xl font-bold">Personalisasi Karir</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-3xl font-bold text-primary-900">
+            Personalisasi Karir
+          </h1>
+          <p className="text-muted-foreground text-lg">
             Isi form berikut untuk mendapatkan rekomendasi karir yang sesuai dengan profil Anda
           </p>
         </div>

@@ -3,46 +3,13 @@ import Link from "next/link";
 import { ArrowRight, Building2, CalendarIcon, GraduationCap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UpcomingEvents } from "@/components/public/UpcomingEvents";
+import HeroSection from "@/components/public/HeroSection";
 
 export default function Home() {
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background pt-16 pb-32">
-        <div className="absolute inset-0 bg-grid-slate-50 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] dark:bg-grid-slate-900/50"></div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-            <div className="flex flex-col justify-center">
-              <h1 className="text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl xl:text-6xl">
-                Bangun Karir Impianmu
-                <span className="text-secondary-500"> Bersama Kami</span>
-              </h1>
-              <p className="mt-4 text-lg text-muted-foreground sm:text-xl">
-                Temukan jalan menuju kesuksesan karirmu dengan bimbingan dari mentor profesional
-                dan program pengembangan yang dirancang khusus untukmu.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary-600 hover:bg-primary-700 text-white" asChild>
-                  <Link href="/register">Mulai Sekarang</Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/about">Pelajari Lebih Lanjut</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="relative hidden lg:block">
-              <Image
-                src="/images/hero-image.png"
-                alt="Career Development"
-                width={600}
-                height={600}
-                className="rounded-2xl shadow-2xl"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection/>
 
       {/* Features Section */}
       <section className="bg-primary-50 py-24">

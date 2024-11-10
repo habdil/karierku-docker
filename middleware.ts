@@ -88,7 +88,7 @@ export async function middleware(request: NextRequest) {
   if (isAdminRoute) {
     const session = await getAdminSession(request);
     if (!session || session.role !== "ADMIN") {
-      return NextResponse.redirect(new URL('/', request.url));
+      return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
   }
 
@@ -96,7 +96,7 @@ export async function middleware(request: NextRequest) {
   if (isMentorRoute) {
     const session = await getMentorSession(request);
     if (!session || session.role !== "MENTOR") {
-      return NextResponse.redirect(new URL('/mentor', request.url));
+      return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
   }
 
@@ -104,7 +104,7 @@ export async function middleware(request: NextRequest) {
   if (isClientRoute) {
     const session = await getClientSession(request);
     if (!session || session.role !== "CLIENT") {
-      return NextResponse.redirect(new URL('/login', request.url));
+      return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
   }
 
