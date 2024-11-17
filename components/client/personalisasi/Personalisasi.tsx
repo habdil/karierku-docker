@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { ChevronRight, ChevronLeft, Loader2 } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 type FormData = {
   major: string;
@@ -23,10 +23,13 @@ type FormData = {
   preferredWorkEnvironment: string;
 };
 
-const CareerPersonalizationForm = () => {
+interface CareerPersonalizationFormProps {
+  setSubmitting: (value: boolean) => void;
+}
+
+const CareerPersonalizationForm = ({ setSubmitting }: CareerPersonalizationFormProps) => {
   const router = useRouter();
   const [step, setStep] = useState(1);
-  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     major: "",
     interests: [],
@@ -70,7 +73,7 @@ const CareerPersonalizationForm = () => {
 
   const handleSubmit = async () => {
     try {
-      setLoading(true);
+      setSubmitting(true);
       
       // Format data untuk API
       const assessmentData = {
@@ -95,9 +98,8 @@ const CareerPersonalizationForm = () => {
       router.push("/dashboard/career/results");
     } catch (error) {
       console.error("Error submitting assessment:", error);
+      setSubmitting(false);
       // TODO: Show error message
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -111,6 +113,7 @@ const CareerPersonalizationForm = () => {
       </CardHeader>
 
       <CardContent>
+        {/* Step 1 */}
         {step === 1 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -142,6 +145,7 @@ const CareerPersonalizationForm = () => {
           </div>
         )}
 
+        {/* Step 2 */}
         {step === 2 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -149,7 +153,7 @@ const CareerPersonalizationForm = () => {
               <Textarea
                 id="interests"
                 placeholder="Contoh: Teknologi,Desain,DataAnalysis"
-                value={formData.interests}
+                value={formData.interests.join(",")}
                 onChange={(e) => handleArrayInput("interests", e.target.value)}
               />
             </div>
@@ -158,13 +162,14 @@ const CareerPersonalizationForm = () => {
               <Textarea
                 id="hobbies"
                 placeholder="Contoh: Coding,Membaca,Photography"
-                value={formData.hobbies}
+                value={formData.hobbies.join(",")}
                 onChange={(e) => handleArrayInput("hobbies", e.target.value)}
               />
             </div>
           </div>
         )}
 
+        {/* Step 3 */}
         {step === 3 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -172,7 +177,7 @@ const CareerPersonalizationForm = () => {
               <Textarea
                 id="skills"
                 placeholder="Contoh: Programming,PublicSpeaking,ProjectManagement"
-                value={formData.skills}
+                value={formData.skills.join(",")}
                 onChange={(e) => handleArrayInput("skills", e.target.value)}
               />
             </div>
@@ -181,13 +186,14 @@ const CareerPersonalizationForm = () => {
               <Textarea
                 id="strengths"
                 placeholder="Contoh: ProblemSolving,TeamWork,Creativity"
-                value={formData.strengths}
+                value={formData.strengths.join(",")}
                 onChange={(e) => handleArrayInput("strengths", e.target.value)}
               />
             </div>
           </div>
         )}
 
+        {/* Step 4 */}
         {step === 4 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -195,7 +201,7 @@ const CareerPersonalizationForm = () => {
               <Textarea
                 id="workValues"
                 placeholder="Contoh: Work-LifeBalance,Innovation,Growth"
-                value={formData.workValues}
+                value={formData.workValues.join(",")}
                 onChange={(e) => handleArrayInput("workValues", e.target.value)}
               />
             </div>
@@ -220,6 +226,7 @@ const CareerPersonalizationForm = () => {
           </div>
         )}
 
+        {/* Step 5 */}
         {step === 5 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -239,27 +246,20 @@ const CareerPersonalizationForm = () => {
         <Button
           variant="outline"
           onClick={handlePrevious}
-          disabled={step === 1 || loading}
+          disabled={step === 1}
         >
           <ChevronLeft className="w-4 h-4 mr-2" />
           Sebelumnya
         </Button>
 
         {step < totalSteps ? (
-          <Button onClick={handleNext} disabled={loading}>
+          <Button onClick={handleNext}>
             Selanjutnya
             <ChevronRight className="w-4 h-4 ml-2" />
           </Button>
         ) : (
-          <Button onClick={handleSubmit} disabled={loading}>
-            {loading ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Memproses
-              </>
-            ) : (
-              "Submit"
-            )}
+          <Button onClick={handleSubmit}>
+            Submit
           </Button>
         )}
       </CardFooter>

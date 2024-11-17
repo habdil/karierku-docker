@@ -2,19 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loading } from "@/components/ui/loading";
 import CareerPersonalizationForm from "@/components/client/personalisasi/Personalisasi";
 import { LoadingBars } from "@/components/ui/loading-bars";
 
 export default function CareerPersonalizationPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const [hasAssessment, setHasAssessment] = useState(false);
 
   useEffect(() => {
     const checkExistingAssessment = async () => {
       try {
-        // Cek apakah user sudah memiliki assessment sebelumnya
         const response = await fetch("/api/client/career-assessment/check", {
           method: "GET",
         });
@@ -23,7 +22,6 @@ export default function CareerPersonalizationPage() {
           const data = await response.json();
           if (data.hasAssessment) {
             setHasAssessment(true);
-            // Jika sudah ada assessment, redirect ke halaman hasil
             router.push("/dashboard/career/results");
             return;
           }
@@ -38,7 +36,7 @@ export default function CareerPersonalizationPage() {
     checkExistingAssessment();
   }, [router]);
 
-  if (loading) {
+  if (loading || hasAssessment) {
     return (
       <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
         <LoadingBars text="Mengunduh data..." />
@@ -46,10 +44,10 @@ export default function CareerPersonalizationPage() {
     );
   }
 
-  if (hasAssessment) {
+  if (submitting) {
     return (
       <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
-        <LoadingBars text="Mengunduh data..." />
+        <LoadingBars text="Memproses personalisasi karir Anda..." />
       </div>
     );
   }
@@ -66,7 +64,7 @@ export default function CareerPersonalizationPage() {
           </p>
         </div>
 
-        <CareerPersonalizationForm />
+        <CareerPersonalizationForm setSubmitting={setSubmitting} />
       </div>
     </div>
   );

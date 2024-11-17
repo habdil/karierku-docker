@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Building2, CalendarIcon, GraduationCap, Users } from "lucide-react";
+import { ArrowRight, Building2, GraduationCap, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { UpcomingEvents } from "@/components/public/UpcomingEvents";
 import HeroSection from "@/components/public/HeroSection";
