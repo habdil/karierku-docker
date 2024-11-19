@@ -8,7 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, X } from 'lucide-react';
+import { AnimatePresence, motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
 
 type FormData = {
   major: string;
@@ -42,66 +44,132 @@ const CareerPersonalizationForm = ({ setSubmitting }: CareerPersonalizationFormP
     workValues: [],
     preferredWorkEnvironment: "",
   });
+  
+  const [tempInputs, setTempInputs] = useState({
+    interests: "",
+    hobbies: "",
+    skills: "",
+    strengths: "",
+    challenges: "",
+    workValues: "",
+  });
 
   const totalSteps = 5;
 
   const handleNext = () => {
-    if (step < totalSteps) {
-      setStep(step + 1);
-    }
+    if (step < totalSteps) setStep(step + 1);
   };
 
   const handlePrevious = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
+    if (step > 1) setStep(step - 1);
   };
 
   const handleInputChange = (field: keyof FormData, value: string | string[]) => {
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const handleArrayInput = (field: keyof FormData, value: string) => {
+  const handleArrayItemAdd = (field: keyof typeof tempInputs) => {
+    if (tempInputs[field].trim()) {
+      const fieldName = field as keyof FormData;
+      setFormData(prev => ({
+        ...prev,
+        [fieldName]: [...(prev[fieldName] as string[]), tempInputs[field].trim()]
+      }));
+      setTempInputs(prev => ({ ...prev, [field]: "" }));
+    }
+  };
+
+  const handleArrayItemRemove = (field: keyof FormData, index: number) => {
     if (Array.isArray(formData[field])) {
-      const values = value.split(",").map((item) => item.trim());
-      handleInputChange(field, values);
+      setFormData(prev => ({
+        ...prev,
+        [field]: (prev[field] as string[]).filter((_, i) => i !== index)
+      }));
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent, field: keyof typeof tempInputs) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleArrayItemAdd(field);
     }
   };
 
   const handleSubmit = async () => {
     try {
       setSubmitting(true);
-      
-      // Format data untuk API
       const assessmentData = {
         answers: formData,
         clientId: "client-id", // TODO: Get from auth context
       };
 
-      // Kirim ke API
       const response = await fetch("/api/client/career-assessment", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(assessmentData),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit assessment");
-      }
-
-      // Redirect ke halaman hasil
+      if (!response.ok) throw new Error("Failed to submit assessment");
       router.push("/dashboard/career/results");
     } catch (error) {
       console.error("Error submitting assessment:", error);
       setSubmitting(false);
-      // TODO: Show error message
     }
   };
+
+  const renderArrayInput = (field: keyof typeof tempInputs, label: string, placeholder: string) => (
+    <div className="space-y-2">
+      <Label>{label}</Label>
+      <div className="flex gap-2">
+        <Input
+          placeholder={placeholder}
+          value={tempInputs[field]}
+          onChange={e => setTempInputs(prev => ({ ...prev, [field]: e.target.value }))}
+          onKeyPress={e => handleKeyPress(e, field)}
+        />
+        <Button 
+          type="button" 
+          onClick={() => handleArrayItemAdd(field)}
+          variant="outline"
+        >
+          Tambah
+        </Button>
+      </div>
+      <div className="flex flex-wrap gap-2 mt-2">
+        <AnimatePresence>
+          {Array.isArray(formData[field as keyof FormData]) && (formData[field as keyof FormData] as string[]).map((item, index) => (
+            <motion.div
+              key={item}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Badge 
+                variant="info" 
+                className="pl-2 pr-1 py-1 text-sm font-medium bg-gradient-to-r from-blue-500 to-indigo-500 text-white"
+              >
+                {item}
+                <Button
+                  type="button"
+                  onClick={() => handleArrayItemRemove(field as keyof FormData, index)}
+                  variant="ghost"
+                  size="sm"
+                  className="ml-1 hover:bg-white/20 rounded-full p-0.5 transition-colors duration-200"
+                >
+                  <X className="h-3 w-3" />
+                  <span className="sr-only">Remove</span>
+                </Button>
+              </Badge>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
 
   return (
     <Card className="w-full max-w-3xl mx-auto">
@@ -113,7 +181,6 @@ const CareerPersonalizationForm = ({ setSubmitting }: CareerPersonalizationFormP
       </CardHeader>
 
       <CardContent>
-        {/* Step 1 */}
         {step === 1 && (
           <div className="space-y-4">
             <div className="space-y-2">
@@ -145,66 +212,23 @@ const CareerPersonalizationForm = ({ setSubmitting }: CareerPersonalizationFormP
           </div>
         )}
 
-        {/* Step 2 */}
         {step === 2 && (
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="interests">Minat (pisahkan dengan koma)</Label>
-              <Textarea
-                id="interests"
-                placeholder="Contoh: Teknologi,Desain,DataAnalysis"
-                value={formData.interests.join(",")}
-                onChange={(e) => handleArrayInput("interests", e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="hobbies">Hobi (pisahkan dengan koma)</Label>
-              <Textarea
-                id="hobbies"
-                placeholder="Contoh: Coding,Membaca,Photography"
-                value={formData.hobbies.join(",")}
-                onChange={(e) => handleArrayInput("hobbies", e.target.value)}
-              />
-            </div>
+            {renderArrayInput("interests", "Minat", "Tambahkan minat Anda")}
+            {renderArrayInput("hobbies", "Hobi", "Tambahkan hobi Anda")}
           </div>
         )}
 
-        {/* Step 3 */}
         {step === 3 && (
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="skills">Keterampilan (pisahkan dengan koma)</Label>
-              <Textarea
-                id="skills"
-                placeholder="Contoh: Programming,PublicSpeaking,ProjectManagement"
-                value={formData.skills.join(",")}
-                onChange={(e) => handleArrayInput("skills", e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="strengths">Kekuatan (pisahkan dengan koma)</Label>
-              <Textarea
-                id="strengths"
-                placeholder="Contoh: ProblemSolving,TeamWork,Creativity"
-                value={formData.strengths.join(",")}
-                onChange={(e) => handleArrayInput("strengths", e.target.value)}
-              />
-            </div>
+            {renderArrayInput("skills", "Keterampilan", "Tambahkan keterampilan Anda")}
+            {renderArrayInput("strengths", "Kekuatan", "Tambahkan kekuatan Anda")}
           </div>
         )}
 
-        {/* Step 4 */}
         {step === 4 && (
           <div className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="workValues">Nilai Kerja (pisahkan dengan koma)</Label>
-              <Textarea
-                id="workValues"
-                placeholder="Contoh: Work-LifeBalance,Innovation,Growth"
-                value={formData.workValues.join(",")}
-                onChange={(e) => handleArrayInput("workValues", e.target.value)}
-              />
-            </div>
+            {renderArrayInput("workValues", "Nilai Kerja", "Tambahkan nilai kerja yang Anda pegang")}
             <div className="space-y-2">
               <Label htmlFor="preferredWorkEnvironment">Lingkungan Kerja yang Diinginkan</Label>
               <Select
@@ -226,7 +250,6 @@ const CareerPersonalizationForm = ({ setSubmitting }: CareerPersonalizationFormP
           </div>
         )}
 
-        {/* Step 5 */}
         {step === 5 && (
           <div className="space-y-4">
             <div className="space-y-2">
