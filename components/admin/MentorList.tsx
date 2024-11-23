@@ -493,7 +493,7 @@ export function MentorList({ initialMentors }: MentorListProps) {
               Manage your platform mentors here.
             </CardDescription>
           </div>
-          <Button asChild>
+          <Button asChild className="text-white">
             <Link href="/dashboard-admin/mentors/add">
               <UserPlus className="mr-2 h-4 w-4" />
               Add Mentor

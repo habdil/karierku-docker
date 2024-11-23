@@ -1,3 +1,4 @@
+// components/admin/MentorForm.tsx
 "use client";
 
 import { useState } from "react";
@@ -24,13 +25,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Loader2, Save } from "lucide-react";
 
-
-// Form Schema
-const formSchema = z.object({
+// Form Schema for Add
+const addFormSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -49,7 +50,7 @@ const formSchema = z.object({
   education: z.string().min(2, {
     message: "Education must be at least 2 characters.",
   }),
-  maritalStatus: z.enum(["SINGLE", "MARRIED", "OTHER"]),
+  maritalStatus: z.enum(["SINGLE", "MARRIED", "DIVORCED"]),
   company: z.string().min(2, {
     message: "Company name must be at least 2 characters.",
   }),
@@ -61,146 +62,150 @@ const formSchema = z.object({
   }).optional(),
 });
 
-export function AddMentorForm() {
-  const [isLoading, setIsLoading] = useState(false);
+// Form Schema for Edit
+const editFormSchema = z.object({
+  fullName: z.string().min(2, {
+    message: "Full name must be at least 2 characters.",
+  }),
+  phoneNumber: z.string().min(10, {
+    message: "Phone number must be at least 10 characters.",
+  }),
+  education: z.string().min(2, {
+    message: "Education must be at least 2 characters.",
+  }),
+  maritalStatus: z.enum(["SINGLE", "MARRIED", "DIVORCED"]),
+  company: z.string().min(2, {
+    message: "Company name must be at least 2 characters.",
+  }),
+  jobRole: z.string().min(2, {
+    message: "Job role must be at least 2 characters.",
+  }),
+  motivation: z.string().min(10, {
+    message: "Motivation must be at least 10 characters.",
+  }).optional(),
+  status: z.enum(["ACTIVE", "INACTIVE"]),
+});
+
+type MentorFormProps = {
+  type: 'add' | 'edit';
+  initialData?: any;
+  onSubmit: (values: any) => Promise<void>;
+  isLoading: boolean;
+};
+
+export function MentorForm({ type, initialData, onSubmit, isLoading }: MentorFormProps) {
   const router = useRouter();
-  const { toast } = useToast();
+  const formSchema = type === 'add' ? addFormSchema : editFormSchema;
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      username: "",
-      password: "",
-      fullName: "",
-      phoneNumber: "",
-      education: "",
-      maritalStatus: "SINGLE",
-      company: "",
-      jobRole: "",
-      motivation: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      setIsLoading(true);
-      
-      const response = await fetch("/api/admin/mentors", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    defaultValues: type === 'add' 
+      ? {
+          email: "",
+          username: "",
+          password: "",
+          fullName: "",
+          phoneNumber: "",
+          education: "",
+          maritalStatus: "SINGLE",
+          company: "",
+          jobRole: "",
+          motivation: "",
+        }
+      : {
+          fullName: initialData?.fullName || "",
+          phoneNumber: initialData?.phoneNumber || "",
+          education: initialData?.education || "",
+          maritalStatus: initialData?.maritalStatus || "SINGLE",
+          company: initialData?.company || "",
+          jobRole: initialData?.jobRole || "",
+          motivation: initialData?.motivation || "",
+          status: initialData?.status || "ACTIVE",
         },
-        body: JSON.stringify({
-          email: values.email,
-          username: values.username,
-          password: values.password,
-          fullName: values.fullName,
-          phoneNumber: values.phoneNumber,
-          education: values.education,
-          maritalStatus: values.maritalStatus,
-          company: values.company,
-          jobRole: values.jobRole,
-          motivation: values.motivation || "", // Handle optional field
-        }),
-      });
-  
-      const data = await response.json();
-  
-      if (!response.ok) {
-        // Handle specific error messages from API
-        throw new Error(data.error || "Failed to create mentor");
-      }
-  
-      toast({
-        title: "Success",
-        description: "Mentor has been successfully added.",
-      });
-  
-      // Redirect to mentor list after success
-      router.push("/dashboard-admin/mentors");
-      router.refresh();
-      
-    } catch (error: any) {
-      console.error("Failed to add mentor:", error);
-      
-      // Handle different types of errors
-      const errorMessage = error.message || "Failed to add mentor. Please try again.";
-      
-      // If it's a unique constraint violation
-      if (errorMessage.includes("already exists")) {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: errorMessage,
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Error",
-          description: "Failed to add mentor. Please try again.",
-        });
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  });
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Add New Mentor</CardTitle>
+        <CardTitle>
+          {type === 'add' ? 'Add New Mentor' : 'Edit Mentor'}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            {type === 'edit' && (
+              <FormField
+                control={form.control}
+                name="status"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <div className="space-y-0.5">
+                      <FormLabel className="text-base">Account Status</FormLabel>
+                      <FormDescription>
+                        Enable or disable mentor account
+                      </FormDescription>
+                    </div>
+                    <FormControl>
+                      <Switch
+                        checked={field.value === "ACTIVE"}
+                        onCheckedChange={(checked) =>
+                          field.onChange(checked ? "ACTIVE" : "INACTIVE")
+                        }
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Account Information */}
-              <div className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="mentor@example.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+              {type === 'add' && (
+                <div className="space-y-4">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input placeholder="mentor@example.com" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="username"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Username</FormLabel>
-                      <FormControl>
-                        <Input placeholder="johnmentor" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Username</FormLabel>
+                        <FormControl>
+                          <Input placeholder="johnmentor" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input type="password" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl>
+                          <Input type="password" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+              )}
 
-              {/* Personal Information */}
               <div className="space-y-4">
                 <FormField
                   control={form.control}
@@ -245,7 +250,7 @@ export function AddMentorForm() {
                         <SelectContent>
                           <SelectItem value="SINGLE">Single</SelectItem>
                           <SelectItem value="MARRIED">Married</SelectItem>
-                          <SelectItem value="OTHER">Other</SelectItem>
+                          <SelectItem value="DIVORCED">Divorced</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -255,7 +260,6 @@ export function AddMentorForm() {
               </div>
             </div>
 
-            {/* Professional Information */}
             <div className="space-y-4">
               <FormField
                 control={form.control}
@@ -279,7 +283,7 @@ export function AddMentorForm() {
                     <FormItem>
                       <FormLabel>Company</FormLabel>
                       <FormControl>
-                        <Input placeholder="Tech Company Inc." {...field} />
+                        <Input placeholder="Company Name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -293,7 +297,7 @@ export function AddMentorForm() {
                     <FormItem>
                       <FormLabel>Job Role</FormLabel>
                       <FormControl>
-                        <Input placeholder="Senior Software Engineer" {...field} />
+                        <Input placeholder="Software Engineer" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -306,11 +310,11 @@ export function AddMentorForm() {
                 name="motivation"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Motivation (Optional)</FormLabel>
+                    <FormLabel>Motivation{type === 'add' && ' (Optional)'}</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Share your motivation for becoming a mentor..."
-                        className="resize-none"
+                        placeholder="Share your motivation to become a mentor..."
+                        className="min-h-[120px] resize-none"
                         {...field}
                       />
                     </FormControl>
@@ -320,16 +324,28 @@ export function AddMentorForm() {
               />
             </div>
 
-            <Button type="submit" className=" text-white w-full" disabled={isLoading}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Adding Mentor...
-                </>
-              ) : (
-                "Add Mentor"
-              )}
-            </Button>
+            <CardFooter className="px-0 flex justify-end space-x-4">
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => router.back()}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" disabled={isLoading} className="text-white">
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin text-white" />
+                    {type === 'add' ? 'Adding...' : 'Saving...'}
+                  </>
+                ) : (
+                  <>
+                    <Save className="mr-2 h-4 w-4 text-white" />
+                    {type === 'add' ? 'Add Mentor' : 'Save Changes'}
+                  </>
+                )}
+              </Button>
+            </CardFooter>
           </form>
         </Form>
       </CardContent>

@@ -1,3 +1,4 @@
+// app/(admin)/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { redirect } from "next/navigation";
@@ -21,7 +22,6 @@ async function getSession() {
   if (!token) {
     return null;
   }
-
   try {
     const session = await verifyToken(token);
     return session;
@@ -36,7 +36,7 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   const session = await getSession();
-
+  
   if (!session || session.role !== "ADMIN") {
     redirect("/admin");
   }
