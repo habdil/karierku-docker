@@ -1,5 +1,3 @@
-// app/(client)/layout.tsx
-
 import { Metadata } from "next";
 import { ClientHeader } from "@/components/client/ClientHeader";
 import { ClientSidebar } from "@/components/client/ClientSidebar";

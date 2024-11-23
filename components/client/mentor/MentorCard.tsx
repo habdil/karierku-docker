@@ -123,7 +123,7 @@ export const MentorCard = ({
 
       <CardFooter>
         <Button
-          className="w-full"
+          className="w-full text-white"
           onClick={() => router.push(`/dashboard/consultation/${id}`)}
         >
           Mulai Konsultasi

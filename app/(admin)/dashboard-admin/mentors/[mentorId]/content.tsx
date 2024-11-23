@@ -1,11 +1,10 @@
-// app/(admin)/dashboard-admin/mentors/[mentorId]/content.tsx
 "use client";
 
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, Trash2 } from "lucide-react";
+import { ArrowLeft, Trash2, Loader2 } from "lucide-react"; // Tambahkan Loader2
 import { mentorService } from "@/lib/services/mentorService";
 import { MentorFormValues, Mentor } from "@/lib/types/mentor";
 import { DeleteMentorDialog } from "@/components/admin/DeleteMentorDialog";
@@ -23,6 +22,7 @@ export default function EditMentorContent({
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false); // State terpisah untuk loading delete
 
   // Queries
   const { data: mentor, isError, error, isLoading: isLoadingMentor } = useQuery<Mentor, Error>({
@@ -54,6 +54,7 @@ export default function EditMentorContent({
   const deleteMutation = useMutation<void, Error, void>({
     mutationFn: () => mentorService.deleteMentor(params.mentorId),
     onSuccess: () => {
+      setIsDeleting(false); // Reset state setelah selesai
       toast({
         title: "Success",
         description: "Mentor has been deleted successfully",
@@ -61,6 +62,7 @@ export default function EditMentorContent({
       router.push("/dashboard-admin/mentors");
     },
     onError: () => {
+      setIsDeleting(false); // Reset state jika error
       toast({
         variant: "destructive",
         title: "Error",
@@ -74,6 +76,7 @@ export default function EditMentorContent({
   }, [updateMutation]);
 
   const handleDelete = useCallback(() => {
+    setIsDeleting(true); // Set loading state saat mulai delete
     deleteMutation.mutate();
     setIsDeleteDialogOpen(false);
   }, [deleteMutation]);
@@ -146,21 +149,21 @@ export default function EditMentorContent({
         <Button 
           variant="destructive" 
           onClick={() => setIsDeleteDialogOpen(true)}
-          disabled={deleteMutation.isPending}
+          disabled={isDeleting}
           className="flex items-center gap-2"
         >
-          {deleteMutation.isPending ? (
-            <LoadingBars className="h-4 w-4" />
+          {isDeleting ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <Trash2 className="h-4 w-4" />
           )}
-          Delete Mentor
+          {isDeleting ? 'Deleting...' : 'Delete Mentor'}
         </Button>
       </div>
 
       <DeleteMentorDialog
         isOpen={isDeleteDialogOpen}
-        isLoading={deleteMutation.isPending}
+        isLoading={isDeleting}
         onClose={() => setIsDeleteDialogOpen(false)}
         onConfirm={handleDelete}
       />

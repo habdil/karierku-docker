@@ -12,7 +12,7 @@ export async function GET() {
       );
     }
 
-    // Cek apakah client sudah memiliki assessment
+    // Cek apakah client sudah memiliki assessment (logika original tetap dipertahankan)
     const existingAssessment = await prisma.careerAssessment.findFirst({
       where: {
         clientId: session.clientId,
@@ -22,9 +22,15 @@ export async function GET() {
       },
     });
 
+    // Menambahkan informasi tambahan tanpa mengubah logika dasar
     return NextResponse.json({
       hasAssessment: !!existingAssessment,
       assessmentId: existingAssessment?.id,
+      // Informasi tambahan untuk UI
+      assessment: existingAssessment ? {
+        createdAt: existingAssessment.createdAt,
+        status: existingAssessment.geminiResponse ? "COMPLETED" : "PENDING"
+      } : null
     });
 
   } catch (error) {
