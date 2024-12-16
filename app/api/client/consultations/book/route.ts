@@ -1,16 +1,23 @@
-// app/api/client/consultations/book/route.ts
 import { NextResponse } from "next/server";
-import  prisma  from "@/lib/prisma";
-import { getClientSession } from "@/lib/auth";
+import prisma from "@/lib/prisma";
+import { getClientSession, type ClientSession } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
+    // Get client session
     const session = await getClientSession();
     if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { mentorId, slotId, message } = await req.json();
+
+    if (!mentorId || !slotId) {
+      return NextResponse.json(
+        { error: "mentorId and slotId are required" },
+        { status: 400 }
+      );
+    }
 
     // Verify slot is available
     const slot = await prisma.consultationSlot.findUnique({
@@ -28,16 +35,21 @@ export async function POST(req: Request) {
       );
     }
 
-    // Create consultation
+    // Create consultation with transaction
     const consultation = await prisma.$transaction(async (tx) => {
-      // Create consultation
+      // Create consultation using clientId from session
       const consultation = await tx.consultation.create({
         data: {
-          clientId: session.id,
+          clientId: session.clientId, // Use clientId from session
           mentorId,
           status: "PENDING",
           slotId,
         },
+        include: {
+          client: true,
+          mentor: true,
+          slot: true
+        }
       });
 
       // Mark slot as booked
@@ -51,7 +63,7 @@ export async function POST(req: Request) {
         await tx.message.create({
           data: {
             consultationId: consultation.id,
-            senderId: session.id,
+            senderId: session.clientId, // Use clientId from session
             content: message,
             type: "TEXT",
           },
@@ -65,7 +77,7 @@ export async function POST(req: Request) {
           message: `You have a new consultation request from ${session.fullName}`,
           type: "CONSULTATION",
           mentorId,
-          clientId: session.id,
+          clientId: session.clientId, // Use clientId from session
         },
       });
 

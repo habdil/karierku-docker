@@ -11,29 +11,24 @@ export interface ConsultationSlot {
     recurringDays: number[];
   }
   
-export interface ConsultationDetails {
-  id: string;
-  status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'CANCELLED';
-  client: {
+  export interface ConsultationDetails {
+    client: any;
     id: string;
-    fullName: string;
-    image?: string;
-  };
-  mentor: {
-    expertise: any;
-    id: string;
-    fullName: string;
-    image?: string;
-  };
-  startTime?: string;
-  endTime?: string;
-  zoomLink?: string;
-  slotId?: string;
-  lastMessageAt?: string;
-  rating?: number;
-  review?: string;
-  messages: any[];
-}
+    status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'CANCELLED';
+    zoomLink?: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+    startTime?: string | Date | null; // Add this
+    endTime?: string | Date | null; 
+    lastMessageAt?: Date | null;
+    slot: ConsultationSlot | null;
+    mentor: {
+      id: string;
+      fullName: string;
+      image?: string | null;
+      expertise: MentorExpertise[];
+    };
+  }
   
   export interface ConsultationMessage {
     id: string;
@@ -54,3 +49,10 @@ export interface ConsultationDetails {
     status: boolean;
     consultationId?: string;
   }
+
+  export interface MentorExpertise {
+    id: string;
+    area: string;
+    level: number;
+  }
+

@@ -1,246 +1,193 @@
-// // app/api/mentor/consultations/route.ts
-// import { NextResponse } from "next/server";
-// import { ConsultationStatus, PrismaClient } from "@prisma/client";
-// import { getMentorSession } from "@/lib/auth";
-
-// const prisma = new PrismaClient();
-
-// // GET: Ambil semua konsultasi mentor
-// export async function GET(request: Request) {
-//   try {
-//     const session = await getMentorSession();
-    
-//     if (!session?.mentorId) {
-//       return NextResponse.json(
-//         { 
-//           success: false, 
-//           error: "Unauthorized" 
-//         }, 
-//         { status: 401 }
-//       );
-//     }
-
-//     // Ambil query parameters untuk filter
-//     const { searchParams } = new URL(request.url);
-//     const status = searchParams.get('status') as ConsultationStatus | undefined;
-//     const date = searchParams.get('date');
-
-//     // Buat base query
-//     const where = {
-//       mentorId: session.mentorId,
-//       ...(status && { status }),
-//       ...(date && {
-//         slot: {
-//           startTime: {
-//             gte: new Date(date),
-//             lt: new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
-//           },
-//         },
-//       }),
-//     };
-
-//     // Ambil konsultasi dengan relasi
-//     const consultations = await prisma.consultation.findMany({
-//       where,
-//       include: {
-//         client: {
-//           select: {
-//             fullName: true,
-//             currentStatus: true
-//           }
-//         },
-//         slot: true,
-//         messages: {
-//           orderBy: {
-//             createdAt: 'desc'
-//           },
-//           take: 1 // Ambil pesan terakhir saja
-//         },
-//         _count: {
-//           select: {
-//             messages: true
-//           }
-//         }
-//       },
-//       orderBy: {
-//         lastMessageAt: 'desc'
-//       }
-//     });
-
-//     return NextResponse.json({
-//       success: true,
-//       data: consultations
-//     });
-
-//   } catch (error) {
-//     console.error("Error fetching consultations:", error);
-//     return NextResponse.json(
-//       { 
-//         success: false, 
-//         error: "Failed to fetch consultations" 
-//       }, 
-//       { status: 500 }
-//     );
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
-
-// // POST: Buat konsultasi baru atau slot konsultasi
-// export async function POST(request: Request) {
-//   try {
-//     const session = await getMentorSession();
-    
-//     if (!session?.mentorId) {
-//       return NextResponse.json(
-//         { 
-//           success: false, 
-//           error: "Unauthorized" 
-//         }, 
-//         { status: 401 }
-//       );
-//     }
-
-//     const body = await request.json();
-//     const { 
-//       startTime, 
-//       endTime, 
-//       duration,
-//       maxBookings = 1,
-//       isRecurring = false,
-//       recurringDays = []
-//     } = body;
-
-//     // Validasi input
-//     if (!startTime || !endTime || !duration) {
-//       return NextResponse.json(
-//         { 
-//           success: false, 
-//           error: "Missing required fields" 
-//         }, 
-//         { status: 400 }
-//       );
-//     }
-
-//     // Validasi waktu
-//     const start = new Date(startTime);
-//     const end = new Date(endTime);
-
-//     if (start >= end) {
-//       return NextResponse.json(
-//         { 
-//           success: false, 
-//           error: "End time must be after start time" 
-//         }, 
-//         { status: 400 }
-//       );
-//     }
-
-//     // Cek overlap dengan slot yang sudah ada
-//     const existingSlot = await prisma.consultationSlot.findFirst({
-//       where: {
-//         mentorId: session.mentorId,
-//         OR: [
-//           {
-//             AND: [
-//               { startTime: { lte: start } },
-//               { endTime: { gt: start } }
-//             ]
-//           },
-//           {
-//             AND: [
-//               { startTime: { lt: end } },
-//               { endTime: { gte: end } }
-//             ]
-//           }
-//         ]
-//       }
-//     });
-
-//     if (existingSlot) {
-//       return NextResponse.json(
-//         { 
-//           success: false, 
-//           error: "Time slot overlaps with existing slot" 
-//         }, 
-//         { status: 400 }
-//       );
-//     }
-
-//     // Buat slot konsultasi baru
-//     const slot = await prisma.consultationSlot.create({
-//       data: {
-//         mentorId: session.mentorId,
-//         startTime: start,
-//         endTime: end,
-//         duration,
-//         maxBookings,
-//         isRecurring,
-//         recurringDays,
-//       }
-//     });
-
-//     // Jika recurring, buat slot untuk minggu-minggu berikutnya
-//     if (isRecurring && recurringDays.length > 0) {
-//       // Implementasi logika recurring di sini
-//       // ...
-//     }
-
-//     return NextResponse.json({
-//       success: true,
-//       data: slot
-//     });
-
-//   } catch (error) {
-//     console.error("Error creating consultation slot:", error);
-//     return NextResponse.json(
-//       { 
-//         success: false, 
-//         error: "Failed to create consultation slot",
-//         details: error instanceof Error ? error.message : "Unknown error"
-//       }, 
-//       { status: 500 }
-//     );
-//   } finally {
-//     await prisma.$disconnect();
-//   }
-// }
-
 // app/api/mentor/consultations/route.ts
 import { NextResponse } from "next/server";
-import  prisma  from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { getMentorSession } from "@/lib/auth";
 
 export async function GET() {
   try {
+    // 1. Validate mentor session
     const session = await getMentorSession();
     if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json(
+        { error: "Unauthorized access" },
+        { status: 401 }
+      );
     }
 
+    if (!session.mentorId) {
+      return NextResponse.json(
+        { error: "Invalid mentor session - no mentorId found" },
+        { status: 400 }
+      );
+    }
+
+    console.log("[GET Consultations] Mentor Session:", {
+      mentorId: session.mentorId,
+      fullName: session.fullName
+    });
+
+    // 2. Fetch consultations with related data
     const consultations = await prisma.consultation.findMany({
       where: {
         mentorId: session.mentorId,
       },
       include: {
-        client: true,
+        client: {
+          select: {
+            id: true,
+            fullName: true,
+            major: true,
+            currentStatus: true,
+            dreamJob: true
+          }
+        },
+        slot: {
+          select: {
+            startTime: true,
+            endTime: true,
+            duration: true,
+            isBooked: true
+          }
+        },
         messages: {
           orderBy: {
             createdAt: "desc",
           },
           take: 1,
-        },
-        slot: true,
+          select: {
+            id: true,
+            content: true,
+            createdAt: true,
+            senderId: true,
+            type: true
+          }
+        }
       },
       orderBy: {
         updatedAt: "desc",
       },
     });
 
-    return NextResponse.json(consultations);
+    console.log(`[GET Consultations] Found ${consultations.length} consultations for mentor ${session.mentorId}`);
+
+    // 3. Transform data format
+    const transformedConsultations = consultations.map(consultation => ({
+      id: consultation.id,
+      status: consultation.status,
+      zoomLink: consultation.zoomLink,
+      startTime: consultation.slot?.startTime,
+      endTime: consultation.slot?.endTime,
+      duration: consultation.slot?.duration,
+      createdAt: consultation.createdAt,
+      updatedAt: consultation.updatedAt,
+      rating: consultation.rating,
+      review: consultation.review,
+      cancelReason: consultation.cancelReason,
+      cancelledAt: consultation.cancelledAt,
+      mentorNotes: consultation.mentorNotes,
+      client: {
+        id: consultation.client.id,
+        fullName: consultation.client.fullName,
+        major: consultation.client.major,
+        currentStatus: consultation.client.currentStatus,
+        dreamJob: consultation.client.dreamJob
+      },
+      slot: consultation.slot ? {
+        startTime: consultation.slot.startTime,
+        endTime: consultation.slot.endTime,
+        duration: consultation.slot.duration,
+        isBooked: consultation.slot.isBooked
+      } : null,
+      lastMessage: consultation.messages[0] || null
+    }));
+
+    return NextResponse.json(transformedConsultations);
   } catch (error) {
+    console.error("[GET Consultations] Error:", error);
+    
+    // 4. Detailed error response
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    const errorResponse = {
+      error: "Failed to fetch consultations",
+      details: errorMessage,
+      timestamp: new Date().toISOString()
+    };
+
+    return NextResponse.json(errorResponse, { status: 500 });
+  }
+}
+
+// Handle PATCH requests for updating consultation status or adding zoom links
+export async function PATCH(req: Request) {
+  try {
+    const session = await getMentorSession();
+    if (!session) {
+      return NextResponse.json(
+        { error: "Unauthorized access" },
+        { status: 401 }
+      );
+    }
+
+    const body = await req.json();
+    const { consultationId, status, zoomLink } = body;
+
+    if (!consultationId) {
+      return NextResponse.json(
+        { error: "Consultation ID is required" },
+        { status: 400 }
+      );
+    }
+
+    // Verify consultation belongs to mentor
+    const consultation = await prisma.consultation.findFirst({
+      where: {
+        id: consultationId,
+        mentorId: session.mentorId
+      }
+    });
+
+    if (!consultation) {
+      return NextResponse.json(
+        { error: "Consultation not found" },
+        { status: 404 }
+      );
+    }
+
+    // Update consultation
+    const updateData: any = {};
+    if (status) updateData.status = status;
+    if (zoomLink !== undefined) updateData.zoomLink = zoomLink;
+
+    const updatedConsultation = await prisma.consultation.update({
+      where: {
+        id: consultationId
+      },
+      data: updateData,
+      include: {
+        client: true,
+        slot: true,
+        messages: {
+          orderBy: {
+            createdAt: "desc"
+          },
+          take: 1
+        }
+      }
+    });
+
+    console.log(`[PATCH Consultation] Updated consultation ${consultationId}:`, updateData);
+
+    return NextResponse.json(updatedConsultation);
+  } catch (error) {
+    console.error("[PATCH Consultation] Error:", error);
+    
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      {
+        error: "Failed to update consultation",
+        details: errorMessage,
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }

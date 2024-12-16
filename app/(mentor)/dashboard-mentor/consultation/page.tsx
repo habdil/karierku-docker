@@ -25,6 +25,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import SlotManagementDialog from "@/components/mentor/consultations/SlotManagementDialog";
+import ZoomLinkDialog from "@/components/mentor/consultations/ZoomLinkDialog";
 
 export default function MentorConsultationsPage() {
   const router = useRouter();
@@ -156,15 +158,18 @@ export default function MentorConsultationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Consultations</h1>
-        {activeConsultation && (
-          <Button
-            onClick={() => router.push(`/dashboard-mentor/consultation/${activeConsultation.id}`)}
-            className="flex items-center gap-2"
-          >
-            <Video className="h-4 w-4" />
-            Manage Active Session
-          </Button>
-        )}
+        <div className="flex items-center gap-2">
+          <SlotManagementDialog />
+          {activeConsultation && (
+            <Button
+              onClick={() => router.push(`/dashboard-mentor/consultation/${activeConsultation.id}`)}
+              className="flex items-center gap-2"
+            >
+              <Video className="h-4 w-4" />
+              Manage Active Session
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Quick Access Cards */}

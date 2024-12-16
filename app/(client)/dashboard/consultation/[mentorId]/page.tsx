@@ -24,6 +24,7 @@ interface ConsultationSlot {
 }
 
 interface BookingData {
+  mentorId: string;
   slotId: string;
   message: string;
 }
@@ -83,7 +84,7 @@ export default function MentorDetailPage({
   const handleBookSlot = async (bookingData: BookingData) => {
     try {
       setIsBooking(true);
-      const response = await fetch(`/api/client/consultations/${params.mentorId}/book`, {
+      const response = await fetch(`/api/client/consultations/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -135,8 +136,9 @@ export default function MentorDetailPage({
 
   const confirmBooking = () => {
     if (!selectedSlot) return;
-
+  
     handleBookSlot({
+      mentorId: params.mentorId, // tambahkan ini
       slotId: selectedSlot.id,
       message: bookingMessage.trim(),
     });
@@ -164,23 +166,28 @@ export default function MentorDetailPage({
     );
   }
 
-  const availableDatesFilter = (date: Date): boolean => {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    
+// Kode baru - perbaikan logika
+const availableDatesFilter = (date: Date): boolean => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // Tanggal yang sudah lewat tidak bisa dipilih
+  if (date < today) return true;
+
+  // Cek apakah ada slot tersedia pada tanggal tersebut
+  const hasAvailableSlot = availableSlots.some(slot => {
+    const slotDate = new Date(slot.startTime);
     return (
-      date >= today &&
-      availableSlots.some(slot => {
-        const slotDate = new Date(slot.startTime);
-        return (
-          slotDate.getDate() === date.getDate() &&
-          slotDate.getMonth() === date.getMonth() &&
-          slotDate.getFullYear() === date.getFullYear() &&
-          !slot.isBooked
-        );
-      })
+      slotDate.getDate() === date.getDate() &&
+      slotDate.getMonth() === date.getMonth() &&
+      slotDate.getFullYear() === date.getFullYear() &&
+      !slot.isBooked
     );
-  };
+  });
+
+  // Tanggal bisa dipilih jika ada slot tersedia
+  return !hasAvailableSlot;
+};
 
   return (
     <div className="container py-8">
