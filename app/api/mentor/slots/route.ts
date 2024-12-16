@@ -1,237 +1,107 @@
 // app/api/mentor/slots/route.ts
+
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/prisma";
 import { getMentorSession } from "@/lib/auth";
 
-const prisma = new PrismaClient();
+// GET: Mengambil semua slot konsultasi mentor
+export async function GET(req: Request) {
+  try {
+    const session = await getMentorSession();
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-// GET: Ambil semua slot mentor
-export async function GET(request: Request) {
- try {
-   const session = await getMentorSession();
-   
-   if (!session?.mentorId) {
-     return NextResponse.json(
-       { 
-         success: false, 
-         error: "Unauthorized" 
-       }, 
-       { status: 401 }
-     );
-   }
+    const slots = await prisma.consultationSlot.findMany({
+      where: {
+        mentorId: session.mentorId,
+        startTime: {
+          gte: new Date(), // Hanya ambil slot yang belum lewat
+        },
+      },
+      orderBy: {
+        startTime: 'asc',
+      },
+    });
 
-   // Ambil query parameters
-   const { searchParams } = new URL(request.url);
-   const date = searchParams.get('date');
-   const isBooked = searchParams.get('isBooked');
-   const isRecurring = searchParams.get('isRecurring');
-
-   // Buat query filter
-   const where = {
-     mentorId: session.mentorId,
-     ...(date && {
-       startTime: {
-         gte: new Date(date),
-         lt: new Date(new Date(date).setDate(new Date(date).getDate() + 1)),
-       },
-     }),
-     ...(isBooked !== null && { isBooked: isBooked === 'true' }),
-     ...(isRecurring !== null && { isRecurring: isRecurring === 'true' }),
-     // Hanya tampilkan slot yang belum lewat
-     startTime: {
-       gte: new Date()
-     }
-   };
-
-   // Ambil slots dengan consultations
-   const slots = await prisma.consultationSlot.findMany({
-     where,
-     include: {
-       consultations: {
-         select: {
-           id: true,
-           status: true,
-           client: {
-             select: {
-               fullName: true
-             }
-           }
-         }
-       }
-     },
-     orderBy: {
-       startTime: 'asc'
-     }
-   });
-
-   return NextResponse.json({
-     success: true,
-     data: slots
-   });
-
- } catch (error) {
-   console.error("Error fetching slots:", error);
-   return NextResponse.json(
-     { 
-       success: false, 
-       error: "Failed to fetch slots" 
-     }, 
-     { status: 500 }
-   );
- } finally {
-   await prisma.$disconnect();
- }
+    return NextResponse.json(slots);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }
 
-// POST: Buat slot baru
-export async function POST(request: Request) {
- try {
-   const session = await getMentorSession();
-   
-   if (!session?.mentorId) {
-     return NextResponse.json(
-       { 
-         success: false, 
-         error: "Unauthorized" 
-       }, 
-       { status: 401 }
-     );
-   }
+// POST: Menambahkan slot konsultasi baru
+export async function POST(req: Request) {
+  try {
+    const session = await getMentorSession();
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
 
-   const body = await request.json();
-   const { 
-     startTime, 
-     endTime, 
-     duration,
-     maxBookings = 1,
-     isRecurring = false,
-     recurringDays = [],
-     recurringUntil
-   } = body;
+    const { date, startTime, duration, isRecurring, recurringDays } = await req.json();
 
-   // Validasi input
-   if (!startTime || !endTime || !duration) {
-     return NextResponse.json(
-       { 
-         success: false, 
-         error: "Required fields missing" 
-       }, 
-       { status: 400 }
-     );
-   }
+    // Buat objek Date dari kombinasi tanggal dan waktu
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const startDate = new Date(date);
+    startDate.setHours(hours, minutes, 0, 0);
 
-   const start = new Date(startTime);
-   const end = new Date(endTime);
+    // Hitung waktu selesai
+    const endDate = new Date(startDate);
+    endDate.setMinutes(endDate.getMinutes() + duration);
 
-   // Validasi waktu
-   if (start <= new Date() || start >= end) {
-     return NextResponse.json(
-       { 
-         success: false, 
-         error: "Invalid time range" 
-       }, 
-       { status: 400 }
-     );
-   }
+    if (isRecurring && recurringDays.length > 0) {
+      // Buat slot berulang untuk 4 minggu ke depan
+      const slots = [];
+      for (let week = 0; week < 4; week++) {
+        for (const day of recurringDays) {
+          const slotStart = new Date(startDate);
+          slotStart.setDate(slotStart.getDate() + (week * 7) + day);
 
-   // Cek overlap untuk non-recurring slots
-   const existingSlot = await prisma.consultationSlot.findFirst({
-     where: {
-       mentorId: session.mentorId,
-       OR: [
-         {
-           AND: [
-             { startTime: { lte: start } },
-             { endTime: { gt: start } }
-           ]
-         },
-         {
-           AND: [
-             { startTime: { lt: end } },
-             { endTime: { gte: end } }
-           ]
-         }
-       ]
-     }
-   });
+          const slotEnd = new Date(endDate);
+          slotEnd.setDate(slotEnd.getDate() + (week * 7) + day);
 
-   if (existingSlot) {
-     return NextResponse.json(
-       { 
-         success: false, 
-         error: "Time slot overlaps with existing slot" 
-       }, 
-       { status: 400 }
-     );
-   }
+          slots.push({
+            mentorId: session.mentorId,
+            startTime: slotStart,
+            endTime: slotEnd,
+            duration,
+            isBooked: false,
+            isRecurring: true,
+            recurringDays,
+            maxBookings: 1,
+          });
+        }
+      }
 
-   // Buat array untuk bulk create jika recurring
-   const slotsToCreate = [];
+      const createdSlots = await prisma.consultationSlot.createMany({
+        data: slots,
+      });
 
-   // Base slot
-   slotsToCreate.push({
-     mentorId: session.mentorId,
-     startTime: start,
-     endTime: end,
-     duration,
-     maxBookings,
-     isRecurring,
-     recurringDays: isRecurring ? recurringDays : []
-   });
+      return NextResponse.json(createdSlots);
+    } else {
+      // Buat single slot
+      const slot = await prisma.consultationSlot.create({
+        data: {
+          mentorId: session.mentorId,
+          startTime: startDate,
+          endTime: endDate,
+          duration,
+          isBooked: false,
+          isRecurring: false,
+          maxBookings: 1,
+        },
+      });
 
-   // Generate recurring slots jika diperlukan
-   if (isRecurring && recurringUntil && recurringDays.length > 0) {
-     const until = new Date(recurringUntil);
-     let currentDate = new Date(start);
-     
-     while (currentDate <= until) {
-       currentDate.setDate(currentDate.getDate() + 1);
-       const dayOfWeek = currentDate.getDay();
-
-       if (recurringDays.includes(dayOfWeek)) {
-         const slotStart = new Date(currentDate);
-         slotStart.setHours(start.getHours(), start.getMinutes());
-
-         const slotEnd = new Date(currentDate);
-         slotEnd.setHours(end.getHours(), end.getMinutes());
-
-         slotsToCreate.push({
-           mentorId: session.mentorId,
-           startTime: slotStart,
-           endTime: slotEnd,
-           duration,
-           maxBookings,
-           isRecurring,
-           recurringDays
-         });
-       }
-     }
-   }
-
-   // Bulk create slots
-   const createdSlots = await prisma.consultationSlot.createMany({
-     data: slotsToCreate
-   });
-
-   return NextResponse.json({
-     success: true,
-     data: {
-       count: createdSlots.count,
-       message: `Created ${createdSlots.count} slot(s)`
-     }
-   });
-
- } catch (error) {
-   console.error("Error creating slots:", error);
-   return NextResponse.json(
-     { 
-       success: false, 
-       error: "Failed to create slots",
-       details: error instanceof Error ? error.message : "Unknown error"
-     }, 
-     { status: 500 }
-   );
- } finally {
-   await prisma.$disconnect();
- }
+      return NextResponse.json(slot);
+    }
+  } catch (error) {
+    console.error("Error creating slot:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }

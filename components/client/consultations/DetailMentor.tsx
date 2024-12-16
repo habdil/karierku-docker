@@ -12,16 +12,12 @@ import {
   Briefcase,
   GraduationCap,
   MapPin,
-  Phone,
-  Star,
   CheckCircle,
   ArrowLeft,
   MessageCircle,
   Video,
 } from 'lucide-react';
 import { MentorResponse } from '@/lib/types/api';
-import Chat from './Chat';
-import Zoom from './Zoom';
 
 interface ConsultationSlot {
   id: string;
@@ -32,19 +28,22 @@ interface ConsultationSlot {
 }
 
 interface DetailMentorProps {
-    mentor: MentorResponse;
-    availableSlots?: ConsultationSlot[];
-    onBookSlot?: (slotId: string) => void;
-    onChatClick?: () => void;
+  mentor: MentorResponse;
+  availableSlots?: ConsultationSlot[];
+  onBookSlot: () => void; // Changed to no parameters as we're using dialog now
+  onChatClick?: () => void;
 }
 
 const DetailMentor = ({ 
-    mentor, 
-    availableSlots = [], 
-    onBookSlot,
-    onChatClick 
-  }: DetailMentorProps) => {
-    const router = useRouter();
+  mentor, 
+  availableSlots = [], 
+  onBookSlot,
+  onChatClick 
+}: DetailMentorProps) => {
+  const router = useRouter();
+  
+  const upcomingSlots = availableSlots.filter(slot => !slot.isBooked);
+
   return (
     <div className="space-y-6">
       {/* Back Button */}
@@ -60,7 +59,6 @@ const DetailMentor = ({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Section */}
         <Card className="lg:col-span-1">
-          {/* Rest of your profile section code remains the same */}
           <CardHeader>
             <div className="flex flex-col items-center text-center space-y-4">
               <Avatar className="h-24 w-24">
@@ -83,28 +81,28 @@ const DetailMentor = ({
           <CardContent className="space-y-4">
             {/* Action Buttons */}
             <div className="flex justify-center gap-3 pb-4 border-b">
-              <Chat 
-                onClick={onChatClick}
-                variant="default"
-                size="default"
-                className="flex items-center gap-2"
-              >
-                <MessageCircle className="h-4 w-4" color="black"/>
-                Chat
-              </Chat>
-              {mentor.consultation?.zoomLink && (
-                <Zoom 
-                  link={mentor.consultation.zoomLink}
+              {mentor.status === 'ACTIVE' && (
+                <Button 
                   variant="default"
-                  size="default"
                   className="flex items-center gap-2"
+                  onClick={onBookSlot}
                 >
-                  <Video className="h-4 w-4" />
-                  Join Meeting
-                </Zoom>
+                  <Calendar className="h-4 w-4" />
+                  Book Consultation
+                </Button>
               )}
+              <Button
+                variant="outline"
+                className="flex items-center gap-2"
+                onClick={onChatClick}
+                disabled={!mentor.status || mentor.status !== 'ACTIVE'}
+              >
+                <MessageCircle className="h-4 w-4" />
+                Chat
+              </Button>
             </div>
-            {/* Rest of your CardContent remains the same */}
+
+            {/* Profile Info */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-muted-foreground">
                 <Briefcase className="h-4 w-4" />
@@ -134,91 +132,98 @@ const DetailMentor = ({
           </CardContent>
         </Card>
 
-      {/* Details Section */}
-      <div className="lg:col-span-2">
-        <Tabs defaultValue="about">
-          <TabsList className="w-full">
-            <TabsTrigger value="about" className="flex-1">About</TabsTrigger>
-            <TabsTrigger value="schedule" className="flex-1">Schedule</TabsTrigger>
-          </TabsList>
+        {/* Details Section */}
+        <div className="lg:col-span-2">
+          <Tabs defaultValue="about">
+            <TabsList className="w-full">
+              <TabsTrigger value="about" className="flex-1">About</TabsTrigger>
+              <TabsTrigger value="schedule" className="flex-1">Available Schedule</TabsTrigger>
+            </TabsList>
 
-          <TabsContent value="about" className="mt-6">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="space-y-6">
-                  {mentor.motivation && (
+            <TabsContent value="about" className="mt-6">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="space-y-6">
+                    {mentor.motivation && (
+                      <div>
+                        <h3 className="font-medium mb-2">Motivation</h3>
+                        <p className="text-muted-foreground">{mentor.motivation}</p>
+                      </div>
+                    )}
+
                     <div>
-                      <h3 className="font-medium mb-2">Motivation</h3>
-                      <p className="text-muted-foreground">{mentor.motivation}</p>
+                      <h3 className="font-medium mb-2">Areas of Focus</h3>
+                      <ul className="space-y-2">
+                        {mentor.expertise.map((exp) => (
+                          <li key={exp.area} className="flex items-start gap-2">
+                            <CheckCircle className="h-5 w-5 text-primary mt-0.5" />
+                            <div>
+                              <p className="font-medium">{exp.area}</p>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {exp.tags.map((tag) => (
+                                  <Badge key={tag} variant="default" className="text-xs">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  )}
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
 
-                  <div>
-                    <h3 className="font-medium mb-2">Areas of Focus</h3>
-                    <ul className="space-y-2">
-                      {mentor.expertise.map((exp) => (
-                        <li key={exp.area} className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-primary mt-0.5" />
-                          <div>
-                            <p className="font-medium">{exp.area}</p>
-                            <div className="flex flex-wrap gap-1 mt-1">
-                              {exp.tags.map((tag) => (
-                                <Badge key={tag} variant="default" className="text-xs">
-                                  {tag}
-                                </Badge>
-                              ))}
+            <TabsContent value="schedule" className="mt-6">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="mb-4">
+                    <h3 className="font-medium mb-2">Upcoming Available Slots</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Select a time slot to book a consultation with {mentor.fullName}
+                    </p>
+                  </div>
+
+                  {upcomingSlots.length > 0 ? (
+                    <div className="space-y-4">
+                      {upcomingSlots.map((slot) => (
+                        <div
+                          key={slot.id}
+                          className="flex items-center justify-between p-4 border rounded-lg hover:border-primary transition-colors"
+                        >
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="h-4 w-4 text-primary" />
+                              <span>{new Date(slot.startTime).toLocaleDateString()}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                              <Clock className="h-4 w-4" />
+                              <span>
+                                {new Date(slot.startTime).toLocaleTimeString()} - 
+                                {new Date(slot.endTime).toLocaleTimeString()}
+                              </span>
                             </div>
                           </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="schedule" className="mt-6">
-            <Card>
-              <CardContent className="pt-6">
-                {availableSlots.length > 0 ? (
-                  <div className="space-y-4">
-                    {availableSlots.map((slot) => (
-                      <div
-                        key={slot.id}
-                        className="flex items-center justify-between p-4 border rounded-lg"
-                      >
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <Calendar className="h-4 w-4 text-primary" />
-                            <span>{new Date(slot.startTime).toLocaleDateString()}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Clock className="h-4 w-4" />
-                            <span>
-                              {new Date(slot.startTime).toLocaleTimeString()} - 
-                              {new Date(slot.endTime).toLocaleTimeString()}
-                            </span>
-                          </div>
+                          <Button 
+                            onClick={onBookSlot}
+                            variant="default"
+                          >
+                            Book This Slot
+                          </Button>
                         </div>
-                        <Button 
-                          onClick={() => onBookSlot?.(slot.id)}
-                          disabled={slot.isBooked}
-                        >
-                          {slot.isBooked ? 'Booked' : 'Book Session'}
-                        </Button>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center text-muted-foreground py-8">
-                    No available slots at the moment.
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center text-muted-foreground py-8">
+                      No available slots at the moment.
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </div>

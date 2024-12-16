@@ -24,13 +24,6 @@ export function AdminHeader({ user }: AdminHeaderProps) {
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-4 flex-1">
           <form className="hidden lg:flex-1 lg:flex lg:max-w-sm">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search..."
-                className="w-full pl-9 bg-muted/50"
-              />
-            </div>
           </form>
         </div>
 

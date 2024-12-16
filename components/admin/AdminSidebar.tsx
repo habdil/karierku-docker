@@ -120,7 +120,7 @@ export function AdminSidebar({ items = defaultItems, className }: AdminSidebarPr
           className="rounded-lg"
         />
         {!collapsed && (
-          <span className="ml-2 font-semibold text-lg text-black">
+          <span className="ml-2 font-semibold text-lg text-primary-900">
             Karierku
           </span>
         )}

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
-import ListMentor from '@/components/client/consultations/ListMentor';
-import { useMentors } from '@/hooks/useMentors';
-import { Badge } from '@/components/ui/badge';
+import { useState, useEffect } from "react";
+import ConsultationList from "@/components/client/consultations/ConsultationList";
+import { ConsultationDetails } from "@/lib/types/consultations";
+import { useToast } from "@/hooks/use-toast";
+import { LoadingBars } from "@/components/ui/loading-bars";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -14,93 +14,82 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const EXPERTISE_OPTIONS = [
-  { label: 'All Expertise', value: 'all' },
-  { label: 'Web Development', value: 'web-development' },
-  { label: 'Mobile Development', value: 'mobile-development' },
-  { label: 'Data Science', value: 'data-science' },
-  { label: 'UI/UX Design', value: 'ui-ux' },
-];
+export default function ConsultationsPage() {
+  const [consultations, setConsultations] = useState<ConsultationDetails[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all");
+  const { toast } = useToast();
 
-export default function ConsultationPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentExpertise, setCurrentExpertise] = useState('all');
-  
-  const { mentors, loading, error, pagination } = useMentors({
-    search: searchQuery,
-    expertise: currentExpertise === 'all' ? undefined : currentExpertise,
+  useEffect(() => {
+    fetchConsultations();
+  }, []);
+
+  const fetchConsultations = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/client/consultations");
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      setConsultations(data);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to load consultations",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredConsultations = consultations.filter((consultation) => {
+    if (filter === "all") return true;
+    return consultation.status === filter;
   });
 
-  const handleChatClick = (mentorId: string) => {
-    console.log('Opening chat with mentor:', mentorId);
-  };
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <LoadingBars />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Available Mentors</h1>
-        <p className="text-muted-foreground">
-          Connect with our experienced mentors for guidance
-        </p>
-
-        {/* Search and Filter Section */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-            <Input
-              placeholder="Search mentors..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10"
-            />
-          </div>
-          <Select
-            value={currentExpertise}
-            onValueChange={setCurrentExpertise}
-          >
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Choose expertise" />
-            </SelectTrigger>
-            <SelectContent>
-              {EXPERTISE_OPTIONS.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Stats Section */}
-        <div className="flex gap-4">
-          <Badge variant="success">
-            {pagination.total} Mentors Available
-          </Badge>
-        </div>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">My Consultations</h1>
+        <Select
+          value={filter}
+          onValueChange={setFilter}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Filter by status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Status</SelectItem>
+            <SelectItem value="PENDING">Pending</SelectItem>
+            <SelectItem value="ACTIVE">Active</SelectItem>
+            <SelectItem value="COMPLETED">Completed</SelectItem>
+            <SelectItem value="CANCELLED">Cancelled</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
-      {/* Error State */}
-      {error && (
-        <div className="text-red-500 p-4 rounded-lg bg-red-50">
-          {error}
-        </div>
-      )}
-
-      {/* Loading State */}
-      {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="h-48 bg-gray-100 rounded-lg animate-pulse"
-            />
-          ))}
+      {filteredConsultations.length === 0 ? (
+        <div className="text-center py-10">
+          <p className="text-muted-foreground">No consultations found</p>
+          <Button
+            className="mt-4"
+            onClick={() => window.location.href = "/dashboard/consultation/available-mentors"}
+          >
+            Find a Mentor
+          </Button>
         </div>
       ) : (
-        <ListMentor 
-          mentors={mentors}
-          onChatClick={handleChatClick}
-        />
+        <ConsultationList consultations={filteredConsultations} />
       )}
     </div>
   );
