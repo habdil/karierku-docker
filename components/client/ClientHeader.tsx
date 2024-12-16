@@ -26,11 +26,11 @@ export function ClientHeader({
 }: ClientHeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 sm:h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+      <div className="container flex h-14 sm:h-16 items-center justify-between px-4">
         {/* Mobile Search Trigger */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="flex lg:hidden ml-auto">
+            <Button variant="ghost" size="icon" className="lg:hidden">
               <Search className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -39,25 +39,25 @@ export function ClientHeader({
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search events, mentors..."
-                className="w-full pl-9 bg-muted/50"
+                className="w-full pl-9 bg-muted/50 rounded-md shadow-sm"
               />
             </div>
           </SheetContent>
         </Sheet>
 
         {/* Desktop Search */}
-        <div className="hidden lg:flex lg:flex-1 max-w-sm">
-          <div className="relative w-full left-7">
-            <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="hidden lg:flex lg:flex-1 max-w-md mx-auto">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search events, mentors..."
-              className="w-full pl-9 bg-muted/50"
+              placeholder="Search ..."
+              className="w-full pl-9 bg-muted/50 rounded-md shadow-sm"
             />
           </div>
         </div>
 
         {/* Right section */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-4">
           {/* Notifications */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -73,7 +73,7 @@ export function ClientHeader({
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[280px] sm:w-[320px]">
+            <DropdownMenuContent align="end" className="w-[280px] sm:w-[320px] rounded-md shadow-lg">
               <DropdownMenuLabel className="font-normal">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-semibold">Notifications</span>
@@ -98,7 +98,7 @@ export function ClientHeader({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8 right-2">
+                <Avatar className="h-8 w-8">
                   <AvatarImage 
                     src={`https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(clientName)}&backgroundColor=3b82f6`} 
                     alt={clientName} 
@@ -110,7 +110,7 @@ export function ClientHeader({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
-              className="w-[200px] sm:w-[240px]" 
+              className="w-[200px] sm:w-[240px] rounded-md shadow-lg" 
               align="end" 
               forceMount
             >
@@ -125,17 +125,17 @@ export function ClientHeader({
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="hover:bg-primary/10">
                 Profile Settings
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="hover:bg-primary/10">
                 My Career Plan
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="hover:bg-primary/10">
                 Consultations History
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:bg-destructive/5">
+              <DropdownMenuItem className="text-destructive hover:bg-destructive/10">
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>

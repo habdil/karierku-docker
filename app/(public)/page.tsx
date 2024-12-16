@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { UpcomingEvents } from "@/components/public/UpcomingEvents";
 import HeroSection from "@/components/public/HeroSection";
 import { AuthDialog } from "@/components/client/AuthDialog";
+import { FeaturesSection } from "@/components/public/FeatureSection";
 
 export default function Home() {
   return (
@@ -12,61 +13,9 @@ export default function Home() {
       <HeroSection/>
 
       {/* Features Section */}
-      <section className="bg-primary-50 py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-primary-900 sm:text-4xl">
-              Mengapa Memilih Kami?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Kami menyediakan layanan terbaik untuk pengembangan karirmu
-            </p>
-          </div>
+      <FeaturesSection />
 
-          <div className="mt-20 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Feature 1 */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-primary-100 p-4">
-                <GraduationCap className="h-8 w-8 text-primary-600" />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold text-primary-900">
-                Mentor Berkualitas
-              </h3>
-              <p className="mt-2 text-center text-muted-foreground">
-                Mentor profesional dengan pengalaman industri yang luas
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-primary-100 p-4">
-                <Users className="h-8 w-8 text-primary-600" />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold text-primary-900">
-                Komunitas Aktif
-              </h3>
-              <p className="mt-2 text-center text-muted-foreground">
-                Bergabung dengan komunitas pembelajar yang aktif dan supportif
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-primary-100 p-4">
-                <Building2 className="h-8 w-8 text-primary-600" />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold text-primary-900">
-                Koneksi Industri
-              </h3>
-              <p className="mt-2 text-center text-muted-foreground">
-                Akses ke jaringan perusahaan dan kesempatan karir
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-        {/* CTA Section */}
+      {/* CTA Section */}
         <section className="bg-secondary-500 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center">

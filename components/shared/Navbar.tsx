@@ -51,8 +51,8 @@ const Navbar = () => {
           {/* Login Button */}
           <div className="hidden md:flex md:items-center md:space-x-4">
           <AuthDialog mode="login">
-            <Button variant="ghost">
-              Log in
+            <Button variant="ghost" className="text-primary-900">
+              Login
             </Button>
           </AuthDialog>
           

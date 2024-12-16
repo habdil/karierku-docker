@@ -68,8 +68,8 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Close mobile sidebar when route changes
@@ -91,17 +91,16 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
         throw new Error("Logout failed");
       }
 
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         localStorage.removeItem("clientUser");
       }
-      
+
       toast({
         title: "Logout berhasil",
         description: "Sampai jumpa kembali!",
       });
 
       window.location.href = "/";
-      
     } catch (error) {
       console.error("Logout error:", error);
       toast({
@@ -141,7 +140,7 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
           className="rounded-lg"
           priority
         />
-        <span className="ml-2 font-semibold text-lg text-black">
+        <span className="ml-2 font-semibold text-lg text-primary-900">
           KarierKu
         </span>
       </div>
@@ -188,7 +187,7 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
   return (
     <>
       <MobileMenuButton />
-      
+
       {/* Desktop Sidebar */}
       <div className="hidden md:block">
         <SidebarContent />
@@ -198,13 +197,18 @@ export function ClientSidebar({ items = defaultItems, className }: ClientSidebar
       {isMobileOpen && (
         <div className="md:hidden fixed inset-0 z-40">
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
             onClick={() => setIsMobileOpen(false)}
           />
-          
+
           {/* Sidebar */}
-          <div className="fixed inset-y-0 left-0 w-64 bg-card shadow-lg">
+          <div
+            className={cn(
+              "fixed inset-y-0 left-0 w-64 bg-card shadow-lg transform transition-transform duration-300",
+              isMobileOpen ? "translate-x-0" : "-translate-x-full"
+            )}
+          >
             <SidebarContent />
           </div>
         </div>

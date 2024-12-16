@@ -1,14 +1,18 @@
-import { FeatureMaintenance } from "@/components/shared/FeatureMaintanace";
+import { Metadata } from "next";
+import ContactPage from "@/components/public/contact";
 
-const ContactPage = () => {
-    return ( 
-        <div className="flex justify-center items-center h-screen">
-            <FeatureMaintenance
-                title="Tahap Pengambangan"
-                description="Kami sedang mengembangkan fitur ini untuk memperbaiki dan meningkatkan kualitas layanan kami."
-            />
-        </div>
-     );
+export const metadata: Metadata = {
+  title: "Kontak Kami | CareerPathway",
+  description: "Hubungi kami untuk informasi lebih lanjut tentang layanan bimbingan karir dan konsultasi di CareerPathway.",
+  keywords: [
+    "contact",
+    "career guidance",
+    "mentorship",
+    "consultation",
+    "career pathway contact",
+  ],
+};
+
+export default function Page() {
+  return <ContactPage />;
 }
- 
-export default ContactPage;

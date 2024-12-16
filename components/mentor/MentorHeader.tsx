@@ -91,7 +91,7 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between px-4">
         {/* Search section */}
         <div className="flex items-center gap-4 flex-1">
@@ -100,7 +100,7 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search..."
-                className="w-full pl-9 bg-muted/50"
+                className="w-full pl-9 bg-muted/50 rounded-md shadow-sm"
               />
             </div>
           </form>
@@ -123,7 +123,7 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
                 )}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-80">
+            <DropdownMenuContent align="end" className="w-80 rounded-lg shadow-md">
               <DropdownMenuLabel className="flex justify-between items-center">
                 <span>Notifications</span>
                 {unreadCount > 0 && (
@@ -141,7 +141,7 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
                     <DropdownMenuItem
                       key={notification.id}
                       className={classNames(
-                        "flex items-start gap-2 p-3 cursor-pointer",
+                        "flex items-start gap-2 p-3 cursor-pointer rounded-lg",
                         { "bg-muted/50": !notification.read }
                       )}
                       onClick={() => handleNotificationClick(notification)}
@@ -198,7 +198,7 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              className="w-[200px] sm:w-[240px]"
+              className="w-[200px] sm:w-[240px] rounded-lg shadow-md"
               align="end"
               forceMount
             >
@@ -213,17 +213,17 @@ export function MentorHeader({ mentorName = "Mentor" }: MentorHeaderProps) {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="focus:bg-primary/10">
                 Profile Settings
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="focus:bg-primary/10">
                 My Schedule
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-primary/5">
+              <DropdownMenuItem className="focus:bg-primary/10">
                 Client History
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:bg-destructive/5">
+              <DropdownMenuItem className="text-destructive focus:bg-destructive/10">
                 Log out
               </DropdownMenuItem>
             </DropdownMenuContent>

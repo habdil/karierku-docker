@@ -91,7 +91,7 @@ export function MentorSidebar({ items = defaultItems, className }: MentorSidebar
   return (
     <div
       className={cn(
-        "relative flex flex-col border-r bg-card transition-all duration-300",
+        "sticky top-0 h-screen flex flex-col border-r bg-card transition-all duration-300",
         collapsed ? "w-16" : "w-64",
         className
       )}
@@ -109,14 +109,14 @@ export function MentorSidebar({ items = defaultItems, className }: MentorSidebar
           className="rounded-lg"
         />
         {!collapsed && (
-          <span className="ml-2 font-semibold text-lg text-black">
+          <span className="ml-2 font-semibold text-lg text-primary-900">
             KarierKu
           </span>
         )}
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 px-3 py-4">
+      <div className="flex-1 px-3 py-4 overflow-y-auto">
         <nav className="space-y-2">
           {items.map((item) => (
             <Link
@@ -132,7 +132,7 @@ export function MentorSidebar({ items = defaultItems, className }: MentorSidebar
               )}
             >
               {item.icon}
-              {!collapsed && <span className="ml-3">{item.title}</span>}
+              {!collapsed && <span className="ml-3 truncate">{item.title}</span>}
             </Link>
           ))}
         </nav>
@@ -157,7 +157,7 @@ export function MentorSidebar({ items = defaultItems, className }: MentorSidebar
       <Button
         variant="ghost"
         size="icon"
-        className="absolute -right-4 top-20 h-8 w-8 rounded-full border bg-background"
+        className="absolute -right-4 top-20 h-8 w-8 rounded-full border bg-background shadow-md hover:bg-muted"
         onClick={() => setCollapsed(!collapsed)}
       >
         {collapsed ? (

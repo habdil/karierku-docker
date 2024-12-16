@@ -71,7 +71,7 @@ const HeroSection = () => {
                 <AuthDialog mode="register">
                   <Button 
                     size="lg"
-                    className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-white"
+                    variant="primary"
                   >
                     Mulai Sekarang
                   </Button>
@@ -79,7 +79,7 @@ const HeroSection = () => {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="w-full sm:w-auto border-white text-white hover:bg-white/10 text-primary-900"
+                  className="w-full sm:w-auto border-white text-white hover:bg-white/10 text-secondary-900"
                   asChild
                 >
                   <Link href="/about">Pelajari Lebih Lanjut</Link>

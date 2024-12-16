@@ -1,14 +1,18 @@
-import { FeatureMaintenance } from '@/components/shared/FeatureMaintanace'
+import { Metadata } from "next";
+import AboutPage from "@/components/public/about";
 
-const AboutPage = () => {
-    return ( 
-        <div className="flex justify-center items-center h-screen">
-            <FeatureMaintenance
-                title="Tahap Pengambangan"
-                description="Kami sedang mengembangkan fitur ini untuk memperbaiki dan meningkatkan kualitas layanan kami."
-            />
-        </div>
-     );
+export const metadata: Metadata = {
+  title: "Tentang Kami | KarierKu",
+  description: "KarierKu adalah platform bimbingan karir berbasis web yang dirancang khusus untuk membantu mahasiswa memahami keterampilan, minat, dan nilai-nilai pribadi mereka.",
+  keywords: [
+    "KarierKu",
+    "mentorship",
+    "professional development",
+    "student career",
+    "career pathway",
+  ],
+};
+
+export default function Page() {
+  return <AboutPage />;
 }
- 
-export default AboutPage;
