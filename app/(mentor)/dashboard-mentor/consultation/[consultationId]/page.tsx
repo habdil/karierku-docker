@@ -35,16 +35,21 @@ interface ConsultationDetails {
     id: string;
     fullName: string;
     image?: string;
-    careerAssessment?: {
+    careerAssessments?: { // Perubahan dari careerAssessment menjadi careerAssessments (array)
       id: string;
       answers: any;
       geminiResponse: string;
-    }
+    }[];
   };
   startTime?: string;
   endTime?: string;
   zoomLink?: string;
   messages: Message[];
+  careerAssessment?: { // Tambahkan field ini sesuai response API
+    id: string;
+    answers: any;
+    geminiResponse: string;
+  };
 }
 
 export default function MentorConsultationDetailPage({
@@ -223,20 +228,20 @@ export default function MentorConsultationDetailPage({
 
   return (
     <div className="space-y-6">
-      <Button
-        variant="ghost"
-        className="flex items-center gap-2"
-        onClick={() => router.back()}
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back
-      </Button>
+    <Button
+      variant="ghost"
+      className="flex items-center gap-2"
+      onClick={() => router.back()}
+    >
+      <ArrowLeft className="h-4 w-4" />
+      Back
+    </Button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Content */}
-        <div className="lg:col-span-2">
-          <Card>
-            <CardHeader>
+      {/* Main Layout */}
+      <div className="space-y-6"> {/* Ubah dari grid ke space-y-6 */}
+        {/* Main Content Card */}
+        <Card className="w-full"> {/* Tambahkan w-full */}
+          <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-4">
                   <Avatar>
@@ -376,40 +381,61 @@ export default function MentorConsultationDetailPage({
               )}
             </CardContent>
           </Card>
-        </div>
 
-        {/* Career Assessment */}
-        <div className="lg:col-span-1">
-          <Card>
-            <CardHeader>
-              <h3 className="font-semibold">Career Assessment Results</h3>
-            </CardHeader>
-            <CardContent>
-              {consultation.client.careerAssessment ? (
+              {/* Career Assessment Card - sekarang full width */}
+      <Card className="w-full">
+        <CardHeader>
+          <h3 className="text-lg font-semibold">Career Assessment Results</h3>
+        </CardHeader>
+        <CardContent>
+          {consultation.careerAssessment ? (
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-base font-medium mb-4">Client Answers</h4>
                 <div className="space-y-4">
-                  <div className="space-y-2">
-                    <h4 className="font-medium">Client Answers</h4>
-                    {Object.entries(consultation.client.careerAssessment.answers).map(([question, answer]) => (
-                      <div key={question} className="space-y-1">
-                        <p className="text-sm font-medium">{question}</p>
-                        <p className="text-sm text-muted-foreground">{String(answer)}</p>
+                  {[
+                    { label: 'Major', key: 'major' },
+                    { label: 'Skills', key: 'skills' },
+                    { label: 'Hobbies', key: 'hobbies' },
+                    { label: 'Dream Job', key: 'dreamJob' },
+                    { label: 'Interests', key: 'interests' },
+                    { label: 'Strengths', key: 'strengths' },
+                    { label: 'Work Values', key: 'workValues' },
+                    { label: 'Current Status', key: 'currentStatus' }
+                  ].map(({ label, key }) => (
+                    consultation.careerAssessment?.answers[key] && (
+                      <div key={key} className="border-b pb-2">
+                        <p className="text-sm font-medium text-gray-600">{label}</p>
+                        <p className="text-sm mt-1">
+                          {Array.isArray(consultation.careerAssessment.answers[key])
+                            ? consultation.careerAssessment.answers[key].join(', ')
+                            : consultation.careerAssessment.answers[key]}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                  <div className="space-y-2">
-                    <h4 className="font-medium">AI Analysis</h4>
-                    <p className="text-sm text-muted-foreground whitespace-pre-line">
-                      {consultation.client.careerAssessment.geminiResponse}
+                    )
+                  ))}
+                </div>
+              </div>
+              
+              {consultation.careerAssessment.geminiResponse && (
+                <div>
+                  <h4 className="text-base font-medium mb-3">AI Analysis</h4>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">
+                      {consultation.careerAssessment.geminiResponse}
                     </p>
                   </div>
                 </div>
-              ) : (
-                <p className="text-muted-foreground">No career assessment found</p>
               )}
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+            </div>
+          ) : (
+            <div className="text-center py-6">
+              <p className="text-muted-foreground">No career assessment found</p>
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
-  );
+  </div>
+);
 }

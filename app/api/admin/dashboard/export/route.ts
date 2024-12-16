@@ -1,29 +1,38 @@
 // app/api/admin/dashboard/export/route.ts
 import { getAdminSession } from "@/lib/auth";
-import  prisma  from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-  const session = await getAdminSession();
-  
-  if (!session) {
-    return new Response("Unauthorized", { status: 401 });
-  }
-
-  const { searchParams } = new URL(req.url);
-  const startDate = searchParams.get('startDate');
-  const endDate = searchParams.get('endDate');
-  const type = searchParams.get('type'); // users, consultations, events
-
   try {
-    let data;
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    const { searchParams } = new URL(req.url);
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
+    const type = searchParams.get('type');
+
+    if (!type) {
+      return NextResponse.json(
+        { error: "Export type is required" },
+        { status: 400 }
+      );
+    }
+
     const dateFilter = {
       createdAt: {
-        gte: startDate ? new Date(startDate) : undefined,
-        lte: endDate ? new Date(endDate) : undefined
+        ...(startDate && { gte: new Date(startDate) }),
+        ...(endDate && { lte: new Date(endDate) })
       }
     };
 
+    let data;
     switch (type) {
       case 'users':
         data = await prisma.user.findMany({
@@ -31,6 +40,9 @@ export async function GET(req: Request) {
           include: {
             client: true,
             mentor: true
+          },
+          orderBy: {
+            createdAt: 'desc'
           }
         });
         break;
@@ -39,8 +51,19 @@ export async function GET(req: Request) {
         data = await prisma.consultation.findMany({
           where: dateFilter,
           include: {
-            client: true,
-            mentor: true
+            client: {
+              select: {
+                fullName: true
+              }
+            },
+            mentor: {
+              select: {
+                fullName: true
+              }
+            }
+          },
+          orderBy: {
+            createdAt: 'desc'
           }
         });
         break;
@@ -49,8 +72,15 @@ export async function GET(req: Request) {
         data = await prisma.event.findMany({
           where: dateFilter,
           include: {
-            admin: true,
+            admin: {
+              select: {
+                fullName: true
+              }
+            },
             registrations: true
+          },
+          orderBy: {
+            createdAt: 'desc'
           }
         });
         break;
@@ -66,7 +96,10 @@ export async function GET(req: Request) {
   } catch (error) {
     console.error("Export Error:", error);
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { 
+        error: "Failed to export data",
+        details: error instanceof Error ? error.message : "Unknown error"
+      },
       { status: 500 }
     );
   }
