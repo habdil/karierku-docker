@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 interface ClientHeaderProps {
   clientName?: string;
@@ -27,25 +26,7 @@ export function ClientHeader({
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 sm:h-16 items-center justify-between px-4">
-        {/* Mobile Search Trigger */}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="lg:hidden">
-              <Search className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="top" className="w-full p-4">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                placeholder="Search events, mentors..."
-                className="w-full pl-9 bg-muted/50 rounded-md shadow-sm"
-              />
-            </div>
-          </SheetContent>
-        </Sheet>
-
-        {/* Desktop Search */}
+        {/* Desktop Search Only */}
         <div className="hidden lg:flex lg:flex-1 max-w-md mx-auto">
           <div className="relative w-full">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -57,7 +38,7 @@ export function ClientHeader({
         </div>
 
         {/* Right section */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-auto">
           {/* Notifications */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
