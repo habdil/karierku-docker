@@ -1,4 +1,3 @@
-// app/api/auth/callback/google/route.ts
 import { cookies } from 'next/headers';
 import { NextRequest } from 'next/server';
 import { createClientSession } from '@/lib/auth';
@@ -15,28 +14,34 @@ interface GoogleUserInfo {
   locale: string;
 }
 
+// Tandai route sebagai dinamis
+export const dynamic = 'force-dynamic';
+
+// Helper untuk URL redirect yang aman
+const getRedirectUrl = (path: string) => {
+  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+  return new URL(path, baseUrl).toString();
+};
+
 export async function GET(req: NextRequest) {
   try {
-    const searchParams = req.nextUrl.searchParams;
-    const code = searchParams.get('code');
+    const url = new URL(req.url);
+    const code = url.searchParams.get('code');
     
     if (!code) {
       console.error('No authorization code present');
-      return Response.redirect(`${process.env.NEXTAUTH_URL}/login?error=NoCode`);
+      return Response.redirect(getRedirectUrl('/login?error=NoCode'));
     }
 
-    // Get stored code verifier
     const codeVerifier = cookies().get('code_verifier')?.value;
     
     if (!codeVerifier) {
       console.error('No code verifier found');
-      return Response.redirect(`${process.env.NEXTAUTH_URL}/login?error=NoCodeVerifier`);
+      return Response.redirect(getRedirectUrl('/login?error=NoCodeVerifier'));
     }
 
-    // Clean up code verifier cookie
     cookies().delete('code_verifier');
 
-    // Exchange code with token using code verifier
     const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -44,7 +49,7 @@ export async function GET(req: NextRequest) {
         code,
         client_id: process.env.GOOGLE_CLIENT_ID!,
         client_secret: process.env.GOOGLE_CLIENT_SECRET!,
-        redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/google`,
+        redirect_uri: getRedirectUrl('/api/auth/callback/google'),
         grant_type: 'authorization_code',
         code_verifier: codeVerifier
       }),
@@ -54,12 +59,11 @@ export async function GET(req: NextRequest) {
       console.error('Failed to get access token');
       const error = await tokenResponse.text();
       console.error(error);
-      return Response.redirect(`${process.env.NEXTAUTH_URL}/login?error=TokenError`);
+      return Response.redirect(getRedirectUrl('/login?error=TokenError'));
     }
 
     const tokens = await tokenResponse.json();
 
-    // Get user info
     const userInfoResponse = await fetch(
       'https://www.googleapis.com/oauth2/v2/userinfo',
       {
@@ -71,19 +75,17 @@ export async function GET(req: NextRequest) {
 
     if (!userInfoResponse.ok) {
       console.error('Failed to get user info');
-      return Response.redirect(`${process.env.NEXTAUTH_URL}/login?error=UserInfoError`);
+      return Response.redirect(getRedirectUrl('/login?error=UserInfoError'));
     }
 
     const googleUser: GoogleUserInfo = await userInfoResponse.json();
 
-    // Check for existing user
     let user = await prisma.user.findUnique({
       where: { email: googleUser.email },
       include: { client: true },
     });
 
     if (!user) {
-      // Create new user
       const username = googleUser.email.split('@')[0];
       
       user = await prisma.user.create({
@@ -106,7 +108,6 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    // Create session
     await createClientSession({
       id: user.id,
       email: user.email,
@@ -116,10 +117,9 @@ export async function GET(req: NextRequest) {
       permissions: ["client.access"]
     });
 
-    return Response.redirect(`${process.env.NEXTAUTH_URL}/dashboard`);
-
+    return Response.redirect(getRedirectUrl('/dashboard'));
   } catch (error) {
     console.error('Google callback error:', error);
-    return Response.redirect(`${process.env.NEXTAUTH_URL}/login?error=CallbackError`);
+    return Response.redirect(getRedirectUrl('/login?error=CallbackError'));
   }
 }

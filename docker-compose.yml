@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      target: runner
+      args:
+        - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+        - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        - DATABASE_URL=${DATABASE_URL}
+    environment:
+      # Database URLs
+      - DATABASE_URL=${DATABASE_URL}
+      - DIRECT_URL=${DIRECT_URL}
+      
+      # Auth Configuration
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXTAUTH_URL=http://localhost:3000
+      
+      # Supabase Configuration
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      
+      # Google Auth
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      
+      # Gemini API
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      
+      # Node Environment
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
