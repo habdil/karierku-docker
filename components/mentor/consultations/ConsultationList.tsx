@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Calendar, Clock, MessageCircle, Video, Settings } from 'lucide-react';
 import { ConsultationDetails } from '@/lib/types/consultations';
+import ChatDialog from '@/components/shared/chat/ChatDialog';
+import { useSession } from "next-auth/react";
 import {
   Dialog,
   DialogContent,
@@ -50,13 +52,15 @@ export default function ConsultationList({
     }
   };
 
+  const { data: session } = useSession();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {consultations.map((consultation) => (
         <Card key={consultation.id}>
           <CardHeader className="flex flex-row items-center gap-4">
             <Avatar>
-              <AvatarImage src={consultation.client.image} />
+              <AvatarImage src={consultation.client.image || undefined} />
               <AvatarFallback>
                 {consultation.client.fullName.charAt(0)}
               </AvatarFallback>
@@ -128,6 +132,22 @@ export default function ConsultationList({
           </CardContent>
 
           <CardFooter className="flex justify-end gap-2">
+            {/* Tambahkan tombol Chat sebelum tombol Manage */}
+            {consultation.status === 'ACTIVE' && (
+              <ChatDialog
+                currentUserId={session?.user?.id || ''}
+                participant={{
+                  id: consultation.client.id,
+                  name: consultation.client.fullName,
+                  image: consultation.client.image || undefined,
+                  status: 'online'
+                }}
+                consultationId={consultation.id}
+                consultationStatus={consultation.status}
+                userRole="MENTOR" // Tambahkan ini
+                triggerClassName="flex items-center gap-2"
+              />
+            )}
             <Button
               variant="default"
               onClick={() => router.push(`/dashboard-mentor/consultation/${consultation.id}`)}

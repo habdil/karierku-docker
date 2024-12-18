@@ -22,6 +22,21 @@ export default function ConsultationsPage() {
 
   useEffect(() => {
     fetchConsultations();
+
+    // Setup SSE for real-time updates
+    const eventSource = new EventSource("/api/client/consultations/sse");
+
+    eventSource.onmessage = (event) => {
+      const updatedConsultations: ConsultationDetails[] = JSON.parse(event.data);
+      setConsultations(updatedConsultations);
+    };
+
+    eventSource.onerror = () => {
+      eventSource.close();
+      console.error("SSE connection lost, attempting to reconnect...");
+    };
+
+    return () => eventSource.close();
   }, []);
 
   const fetchConsultations = async () => {
@@ -61,10 +76,7 @@ export default function ConsultationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">My Consultations</h1>
-        <Select
-          value={filter}
-          onValueChange={setFilter}
-        >
+        <Select value={filter} onValueChange={setFilter}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Filter by status" />
           </SelectTrigger>
@@ -83,7 +95,7 @@ export default function ConsultationsPage() {
           <p className="text-muted-foreground">No consultations found</p>
           <Button
             className="mt-4"
-            onClick={() => window.location.href = "/dashboard/consultation/available-mentors"}
+            onClick={() => (window.location.href = "/dashboard/consultation/available-mentors")}
           >
             Find a Mentor
           </Button>

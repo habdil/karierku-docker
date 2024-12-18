@@ -367,17 +367,27 @@ export default function MentorConsultationDetailPage({
 
               {/* Chat Box */}
               {consultation.status === 'ACTIVE' && userId && (
-                <ChatBox
-                  messages={consultation.messages}
-                  currentUserId={userId}
-                  participant={{
-                    id: consultation.client.id,
-                    name: consultation.client.fullName,
-                    image: consultation.client.image,
-                    status: 'online'
-                  }}
-                  onSendMessage={handleSendMessage}
-                />
+              <ChatBox
+                messages={consultation.messages.map((msg) => ({
+                  id: msg.id,
+                  senderId: msg.senderId,
+                  senderName: "Unknown User", // Default jika nama tidak ada
+                  senderImage: undefined,    // Default jika gambar tidak ada
+                  content: msg.content,
+                  type: "TEXT",              // Default
+                  status: "SENT",            // Default
+                  createdAt: new Date(msg.createdAt),
+                }))}
+                currentUserId={userId}
+                participant={{
+                  id: consultation.client.id,
+                  name: consultation.client.fullName,
+                  image: consultation.client.image,
+                  status: "online",
+                }}
+                onSendMessage={handleSendMessage}
+                userRole="MENTOR" // Tambahkan properti userRole
+              />
               )}
             </CardContent>
           </Card>

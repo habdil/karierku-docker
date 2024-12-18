@@ -156,7 +156,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default" size="sm">
+        <Button variant="default" size="sm" className='text-white'>
           <Download className="mr-2 h-4 w-4" />
           Export Data
         </Button>
@@ -196,18 +196,18 @@ export function ExportButton({ onExport }: ExportButtonProps) {
           </div>
 
           <Button 
-            className="w-full" 
+            className="w-full text-white" 
             onClick={handleExport}
             disabled={isExporting}
           >
             {isExporting ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-4 w-4 animate-spin text-white" />
                 Exporting...
               </>
             ) : (
               <>
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-4 w-4 text-white" />
                 Export to Excel
               </>
             )}

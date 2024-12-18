@@ -42,6 +42,7 @@ model User {
   admin         Admin?
   client        Client?
   mentor        Mentor?
+  sentMessages   Message[]    @relation("MessageSender")
 }
 
 model Client {
@@ -165,14 +166,17 @@ model Consultation {
   client        Client            @relation(fields: [clientId], references: [id])
   mentor        Mentor            @relation(fields: [mentorId], references: [id])
   slot          ConsultationSlot? @relation(fields: [slotId], references: [id])
-  messages      Message[]
-  attachments   ConsultationAttachment[]
   createdAt     DateTime          @default(now())
-  updatedAt     DateTime          @updatedAt
+  updatedAt     DateTime          @updatedAt        
+  lastMessageId String?    @unique    
+  isActive     Boolean    @default(true)  
+  lastMessage   Message?   @relation("LastMessage", fields: [lastMessageId], references: [id])
+  messages     Message[]  @relation("ConsultationMessages")
 
   @@index([clientId])
   @@index([mentorId])
   @@index([slotId])
+  @@index([lastMessageAt])
 }
 
 model ConsultationSlot {
@@ -196,19 +200,25 @@ model ConsultationSlot {
 }
 
 model Message {
-  id             String       @id @default(cuid())
-  consultationId String
-  senderId       String
-  content        String
-  // Fields baru
-  readAt         DateTime?    // Waktu dibaca
-  type           MessageType  @default(TEXT)  // Tipe pesan
+  id               String         @id @default(cuid())
+  consultationId   String
+  senderId        String
+  content         String         @db.Text    
+  type            MessageType    @default(TEXT)
+  readAt          DateTime?    
+  status          MessageStatus  @default(SENT)
+  
   // Relations
-  consultation   Consultation @relation(fields: [consultationId], references: [id])
-  createdAt      DateTime     @default(now())
+  sender          User           @relation("MessageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  consultation    Consultation   @relation("ConsultationMessages", fields: [consultationId], references: [id], onDelete: Cascade)
+  lastInConsultation Consultation? @relation("LastMessage")  // Perbaiki nama untuk konsistensi dengan Consultation
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 
   @@index([consultationId])
   @@index([senderId])
+  @@index([createdAt])
+  @@index([status])
 }
 
 model CareerAssessment {
@@ -220,20 +230,6 @@ model CareerAssessment {
   updatedAt      DateTime @updatedAt
   client         Client   @relation(fields: [clientId], references: [id])
   mentorRecommendations MentorRecommendation[]
-}
-
-model ConsultationAttachment {
-  id             String       @id @default(cuid())
-  consultationId String
-  fileName       String
-  fileUrl        String
-  fileType       String
-  fileSize       Int
-  uploadedBy     String
-  consultation   Consultation @relation(fields: [consultationId], references: [id])
-  createdAt      DateTime     @default(now())
-
-  @@index([consultationId])
 }
 
 model ClientMentor {
@@ -284,7 +280,6 @@ model MentorRecommendation {
 
 enum MessageType {
   TEXT
-  FILE
   SYSTEM
 }
 
@@ -325,4 +320,10 @@ enum RecommendationStatus {
   ACCEPTED
   REJECTED
   EXPIRED
+}
+
+enum MessageStatus {
+  SENT
+  DELIVERED
+  READ
 }

@@ -1,34 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea"; 
 import { Send } from "lucide-react";
 
 interface ChatInputProps {
   onSendMessage: (content: string) => void;
-  isLoading?: boolean;
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export default function ChatInput({ 
   onSendMessage, 
-  isLoading,
-  placeholder = "Type a message..."
+  placeholder,
+  disabled = false
 }: ChatInputProps) {
   const [message, setMessage] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  
-  // Auto resize textarea
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = 'auto';
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
-  }, [message]);
 
-  const handleSubmit = () => {
-    if (!message.trim() || isLoading) return;
+  const handleSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     
+    if (!message.trim() || disabled) return;
     onSendMessage(message);
     setMessage("");
     
@@ -38,31 +30,47 @@ export default function ChatInput({
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
     }
   };
 
+  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+    
+    // Auto-resize textarea dengan max height
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      const newHeight = Math.min(textareaRef.current.scrollHeight, 120); // Max height 120px
+      textareaRef.current.style.height = `${newHeight}px`;
+    }
+  };
+
   return (
-    <div className="flex items-end gap-2 p-4 border-t bg-background">
+    <form 
+      onSubmit={handleSubmit}
+      className="flex items-end gap-2 w-full bg-white rounded-lg p-2"
+    >
       <Textarea
         ref={textareaRef}
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={handleTextareaChange}
         onKeyPress={handleKeyPress}
         placeholder={placeholder}
+        disabled={disabled}
         rows={1}
-        className="resize-none min-h-[40px] max-h-[120px]"
+        className="resize-none flex-1 min-h-[40px] max-h-[120px] px-3 py-2"
       />
-      <Button
+      <Button 
+        type="submit"
         size="icon"
-        onClick={handleSubmit}
-        disabled={!message.trim() || isLoading}
+        disabled={!message.trim() || disabled}
+        className="bg-blue-600 hover:bg-blue-700 text-white h-10 w-10 flex-shrink-0"
       >
-        <Send className="h-4 w-4" />
+        <Send className="h-5 w-5" />
       </Button>
-    </div>
+    </form>
   );
 }

@@ -2,6 +2,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { getClientSession } from "@/lib/auth";
+import { broadcastConsultationsUpdate } from "@/lib/sseClient";
 
 export async function GET() {
   try {
@@ -102,6 +103,8 @@ export async function POST(req: Request) {
         messages: true,
       },
     });
+
+    await broadcastConsultationsUpdate(session.clientId);
 
     // Mark slot as booked
     await prisma.consultationSlot.update({

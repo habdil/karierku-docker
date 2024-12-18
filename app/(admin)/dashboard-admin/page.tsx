@@ -126,7 +126,7 @@ export default function AdminDashboardPage() {
             </div>
 
             <div>
-              <Card className="h-full">
+              <Card className="h-full w-full">
                 <CardHeader className="bg-primary/5">
                   <CardTitle className="text-lg font-semibold">Recent Activities</CardTitle>
                 </CardHeader>

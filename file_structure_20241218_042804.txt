@@ -1,5 +1,5 @@
 Directory Structure for: D:\SEMESTER 3\EXPO SEMESTER 3\kaktus-karierku
-Scanned on: 2024-12-16 21:09:22
+Scanned on: 2024-12-18 04:28:04
 ==================================================
 
 📁 .next/
@@ -12,15 +12,15 @@ Scanned on: 2024-12-16 21:09:22
             📁 04-BsDCIUqJblm-uELcZo13JoTmlD4GzLn5Ubs-9fsY=/
                 📄 3600.1729954231065.3TewZYwuuTctSQ6CBwt+u67Sx5ZVgijYhfsL-shULG4=.webp (6.9 KB)
             📁 0mRz4NrrrzsBXX-qr7fJJ9iZ1x510HPzXMoreDJkVn8=/
-                📄 60.1731228295120.5+U4r1xT0X3JKN6pG0O3HmKQdscqFqX7cx3hCZmg0FM=.webp (5.7 KB)
+                📄 60.1734370239327.5+U4r1xT0X3JKN6pG0O3HmKQdscqFqX7cx3hCZmg0FM=.webp (5.7 KB)
             📁 1vLaJBpNU6ms9RF1SmFkxaD2RA2TpA89InvA4nVlocg=/
-                📄 3600.1732391403386.xkQ5FFHGLpEcPe4vXK4Rjjj0uhdWydBrUpLQbxUryMM=.webp (78.0 KB)
+                📄 3600.1734420944948.xkQ5FFHGLpEcPe4vXK4Rjjj0uhdWydBrUpLQbxUryMM=.webp (78.0 KB)
             📁 2A79hMmbjIBe0FymdIB3j8YFWxfqRX-2yEXkPAHSoYs=/
                 📄 3600.1730001898254.G+JhguGXJ4tGFSvmzCdSc2E-QZMuWhAr5L9HmSTHZwI=.webp (26.8 KB)
             📁 2LUlc79fa0qCsBKxnbQtC-UjSa+u82j18d4Fq--E14Y=/
-                📄 60.1734341429228.XGVWae7ZQi-ftEBAtR13K9AKjz7qTWHCt8mCs66C8KE=.webp (17.2 KB)
+                📄 60.1734448686098.XGVWae7ZQi-ftEBAtR13K9AKjz7qTWHCt8mCs66C8KE=.webp (17.2 KB)
             📁 2WHhDOr6IdEWQAAWxC7H3BRyasBZAQPdPrzIkc-prIs=/
-                📄 60.1732387877016.-tWX20j5xsEBChVIMGHOXSX9-RUMmZuP-2wJ1yn+oKc=.webp (1.6 KB)
+                📄 60.1734371944019.-tWX20j5xsEBChVIMGHOXSX9-RUMmZuP-2wJ1yn+oKc=.webp (1.6 KB)
             📁 2zjpDJdvnBf2embtsHf4WVrG4-ib1FXhO9b2uBawG6g=/
                 📄 60.1732535057745.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 32Xl6ZX7phzHSlZ1sMOTAYivFzvCwNNaLtQ9p1VM+6c=/
@@ -36,7 +36,7 @@ Scanned on: 2024-12-16 21:09:22
             📁 4Yw2SrWoRZtJ9lWz+fhwUmUrDJZW47X5pcl6EVWpyG0=/
                 📄 3600.1730028062051.ehmM4z8N9FZhY82mPGdTPHDlcjYPzH6dCnH4NeTtgpg=.webp (32.4 KB)
             📁 5TFEDfEWXaxs+-dAjK3poNd2eyE82BhkTZx7h+hDaoM=/
-                📄 3600.1732404654525.UN9TVe1svRDMeLbs1TCYvfE1hOseeyGLxACQa36lZac=.webp (41.9 KB)
+                📄 3600.1734420942934.UN9TVe1svRDMeLbs1TCYvfE1hOseeyGLxACQa36lZac=.webp (41.9 KB)
             📁 61yaDd5MyQVK06hc69Q9Hi1S7Ce0IpMDhmcNrshXGHQ=/
                 📄 3600.1730004190673.oMFRh1kBBENs7+UzZ8aqBmpVnHAu1ns5CMvcrOkoEAk=.webp (41.4 KB)
             📁 72YztH8RbwKSW8NEnmm+ixpHNFFP9dIYQMUfkyI7W8U=/
@@ -48,17 +48,17 @@ Scanned on: 2024-12-16 21:09:22
             📁 7tln6sEYJ9BCzsD2fLT7FInTBDzQ+0YAsOd2Bx4Ge7A=/
                 📄 3600.1729949308254.bvLrZnu6Ogtokpi6nRvXOHaC+2SYgWbV7363g7DzWEk=.webp (14.0 KB)
             📁 8HZNS228FNz-Ycf9gLK4eTnU-HO-avhNB27gC8lnxE8=/
-                📄 3600.1734360820188.bVwarBIshSUeUq7LHU0pscVwJ71oVNCrYcTPXtSzEzM=.webp (71.3 KB)
+                📄 3600.1734473347986.bVwarBIshSUeUq7LHU0pscVwJ71oVNCrYcTPXtSzEzM=.webp (71.3 KB)
             📁 A4uk0o18lkoGNJFpoiUkIfLfSIWPxHF0ABAwfuSHSEY=/
-                📄 60.1734357277429.tix-vZH0VFNHSO460dOnSFa2du3n+h67o2izzmu0j9c=.webp (35.1 KB)
+                📄 60.1734469793638.tix-vZH0VFNHSO460dOnSFa2du3n+h67o2izzmu0j9c=.webp (35.1 KB)
             📁 aB+4ne1SdwwW9-yDThx3tzMONiCa7WdK85yv0DGib9A=/
                 📄 60.1731218352812.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 AEiuB430m8V8L4KGoA4poGsh1atQttSaqriZNb-JbaA=/
                 📄 3600.1729949293111.bvLrZnu6Ogtokpi6nRvXOHaC+2SYgWbV7363g7DzWEk=.webp (14.0 KB)
             📁 ah6s0Mgzn4GX02xucuCVFMDfCmRwTZ9RdhMm-Is5eqw=/
-                📄 60.1731228295104.yq3k+guAUuj-kWYbl3bTgth1tu8gTdTIyoOnQ5LEkNw=.webp (1.0 KB)
+                📄 60.1734370239269.yq3k+guAUuj-kWYbl3bTgth1tu8gTdTIyoOnQ5LEkNw=.webp (1.0 KB)
             📁 apPtnqJ9M7sx8oNVlqjIEPCMIPUZAVFghy4Vdqi5bnU=/
-                📄 60.1734357284296.XaXPoJ3R4PMj-h8aT5574ugzahu+uIGSK82CO3oWV8c=.webp (99.9 KB)
+                📄 60.1734469881591.XaXPoJ3R4PMj-h8aT5574ugzahu+uIGSK82CO3oWV8c=.webp (99.9 KB)
             📁 aqIoug8rfEiifStDOjirHObJZc4scZSpZE5n5YlBVGY=/
                 📄 60.1730025193461.0CCZeLsKiTZAtBPmlknyqqBd1HgBSrBatA04zAYUmIc=.webp (32.8 KB)
             📁 AqUBFUqnu8mB6xMaBD9H7sjEayrE92JlO+pWXBrAsFw=/
@@ -66,27 +66,29 @@ Scanned on: 2024-12-16 21:09:22
             📁 ayNWANd5uhv8F9pb5kraftOmd65VWPyGJGUx9SmyIG0=/
                 📄 3600.1730026447498.eldFiNoCsPsiICkeM8vohSAJ4qkQtEbknNmsTzE03Uc=.webp (99.1 KB)
             📁 B3FSExSNu2kiDCcFiDmXPDCqBfXAvVz3iTGFZaxe5ik=/
-                📄 3600.1734360829150.EHKhIjpo2pAVjb-IMK+AsiPQjt3JMB9rYtwglJUtoU8=.webp (127.4 KB)
+                📄 3600.1734473353361.EHKhIjpo2pAVjb-IMK+AsiPQjt3JMB9rYtwglJUtoU8=.webp (127.4 KB)
             📁 bdnJbysvfp3q893ExFL2zur-pbW42NcZw-McwqUrqNM=/
-                📄 3600.1734360819685.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
+                📄 3600.1734473348208.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
             📁 BndjNvrO5-qgTpwW0Z4jly-7IVxS+8hyWlIHmD51+RU=/
                 📄 3600.1733996917394.H6LZ7wsDqArFo0pyAGhA2sldRGKwhMJWaBGeEm3sL5g=.webp (68.2 KB)
             📁 bPsweUUlDoJ3NE0ir2UbBKfcVeaBW9utSO+llyMPXHA=/
-                📄 60.1734357967405.HEAk+E4TJAU6daS5tsFaSeSjOnJkqtYan6R0W3+Q-VA=.webp (1.8 KB)
+                📄 60.1734470764190.HEAk+E4TJAU6daS5tsFaSeSjOnJkqtYan6R0W3+Q-VA=.webp (1.8 KB)
             📁 brz8scgbkLzMoiXCLizPud7Rq7BflfjGNKjUavlbLC4=/
-                📄 3600.1732404657500.G+JhguGXJ4tGFSvmzCdSc2E-QZMuWhAr5L9HmSTHZwI=.webp (26.8 KB)
+                📄 3600.1734420962001.G+JhguGXJ4tGFSvmzCdSc2E-QZMuWhAr5L9HmSTHZwI=.webp (26.8 KB)
             📁 bSMZtP15txZmxPM4ZbUa0VjHymmJSLwSOGY4tpedpM0=/
                 📄 3600.1729946181995.rwK5r1hwsdC1uZ2tR7kS0wQkCMBNFcrD6oxjYdk8yGE=.webp (27.6 KB)
+            📁 cArzqp-wouVokr5HraQ+B1thIbCzVRoJ6LYTgm40x10=/
+                📄 3600.1734420942290.ez6cd9ALVL5NSQU-0ZC3HWZUbPSBKUP7FUnGuio7Dpk=.webp (9.7 KB)
             📁 D-eDo20juIX7k6sn8YVrOuczv8r4fd+2WNPP4JA+984=/
                 📄 3600.1733996914702.CF0RYbX7PAU8VqYE5FLGS0wU90Hf4QDrautEntDk4n0=.webp (36.3 KB)
             📁 d5M6BUItxaQFAvdb2eKpFiBeSgrgngpzFqCF7foq3VY=/
-                📄 60.1734357275087.MnGtBlNlJAi21xGf4LGnHHojcW-15eG8uA62VTwhF4E=.webp (27.1 KB)
+                📄 60.1734365377028.MnGtBlNlJAi21xGf4LGnHHojcW-15eG8uA62VTwhF4E=.webp (27.1 KB)
             📁 E0KW9opEWcJar-Co90mFnFUY56W-VgBwZqAEYGhfPaM=/
                 📄 60.1731218256229.pgHYaQQYcDkpEBjvU2vy7WdRAoa2eUoUbkT5HrjDATc=.webp (96.3 KB)
             📁 eRnUl9MsM64h-m9+ooOoAjLRnIXTA3xToJVl6REMk3U=/
                 📄 60.1730025193273.8ScBcKsXlXRfn7kU9JCytQK4RW2JM790QtGLIPyd7aU=.webp (26.4 KB)
             📁 F29O+0UplnduMJobMYciEYpxBTpefaYK9+IoV-epHkU=/
-                📄 60.1732403031671.4ryDT2Bv0Dne1Yuy07lkFJy19fS0FOlzvxsjyPL9k3w=.webp (4.0 KB)
+                📄 60.1734398181481.4ryDT2Bv0Dne1Yuy07lkFJy19fS0FOlzvxsjyPL9k3w=.webp (4.0 KB)
             📁 f2uGYD+Q9SvEIKqL9vTla6MM8Gqhc9+dQ8c31HVC8jo=/
                 📄 60.1733879438121.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 Fh4THvPvSeZ9VwpTZe-y3IMaV--oprw+4G7OTrsAtLU=/
@@ -94,11 +96,11 @@ Scanned on: 2024-12-16 21:09:22
             📁 fK4Q2H+w-wcmfekcPb1A-FoPO4bVvyg06GtoeuIrkuY=/
                 📄 60.1730025193065.ehmM4z8N9FZhY82mPGdTPHDlcjYPzH6dCnH4NeTtgpg=.webp (32.4 KB)
             📁 FpwBC1+EJ1D9jDbMPuhMKnxCJx9X1JbKcwKxAEKva6c=/
-                📄 60.1734357284312.fG7xbtpLf3jJ9K+CCyIP8id1i8HyV3U3yipmGt7n9dU=.webp (668.0 B)
+                📄 60.1734441734774.fG7xbtpLf3jJ9K+CCyIP8id1i8HyV3U3yipmGt7n9dU=.webp (668.0 B)
             📁 g00yjUskCswgCaLzwE+KWZhiL-4YnAERcDWf4eeCJdI=/
                 📄 3600.1730042332941.eldFiNoCsPsiICkeM8vohSAJ4qkQtEbknNmsTzE03Uc=.webp (99.1 KB)
             📁 gCM-Pl9WPXXEdt2eeVWSqh8-3Du+agfloGIoSNS+Yzg=/
-                📄 3600.1732404657362.lTIJ0YBR8LMs21zdvh88Bam1s+t4x-qJoG6gElWncdY=.webp (17.5 KB)
+                📄 3600.1734420962182.lTIJ0YBR8LMs21zdvh88Bam1s+t4x-qJoG6gElWncdY=.webp (17.5 KB)
             📁 GEkkYXHPsiUuWgDQm6pD2VaADsov7iPk+Zj-nZ3g0xM=/
                 📄 3600.1733996914377.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
             📁 gGCRFRvxRi50RrIxk5ZceslF44jb5QKL6FiZP+QxqWY=/
@@ -108,7 +110,7 @@ Scanned on: 2024-12-16 21:09:22
             📁 GkKwE7xl9RpOYtt-Y221Mb+fxAjtNaN9frQcxrMrdFY=/
                 📄 3600.1729954500664.lTIJ0YBR8LMs21zdvh88Bam1s+t4x-qJoG6gElWncdY=.webp (17.5 KB)
             📁 GR22Ca7VqikTwRvP17CQHPsua9lQl2K1J5rs4ukuAko=/
-                📄 3600.1732404653627.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
+                📄 3600.1734420942489.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
             📁 hBYvUOUGGVHV1By74PsMTKTviA5K91ehidDKRhl+AlQ=/
                 📄 3600.1730044471604.ClbYGgGcE3pnDfS1m-ZRXVZA+raiiul1dFz6en2Jrms=.webp (60.4 KB)
             📁 hCwZzMGVnHUW4ophkpGQF37TtOWLZdovqC1AGjvffmA=/
@@ -116,11 +118,11 @@ Scanned on: 2024-12-16 21:09:22
             📁 hnq0ZGfAhxCK4+11LQ2s27uYnTYdESBtx6gBriHpAZA=/
                 📄 60.1729875728942.QeErpewfa0AeWqi3ooSiv028UCwpDGRunNsB2oZrd6E=.webp (51.8 KB)
             📁 HTDeKQPZ1749OK7621eBWvX8jw2ur-uq7bTrM0gDMNo=/
-                📄 60.1734357284304.ZuwC1uWpM8Kgmgbo1sOkENFG+WiKwEB0Cc8aYGKhYbI=.webp (434.0 B)
+                📄 60.1734441734768.ZuwC1uWpM8Kgmgbo1sOkENFG+WiKwEB0Cc8aYGKhYbI=.webp (434.0 B)
             📁 HW8gMOgPjuO7gJvmg8-2l8ke+yB2XGO6abEUOGffzTs=/
                 📄 3600.1730044736199.YXDMolmD0cTrMYhJDTJYuP7rshqykteu1SzaG0fdCgs=.webp (22.3 KB)
             📁 HZfCIkUEKecaRsAqQ2A0O+SKEjwd2RMzFNihMHFLuHo=/
-                📄 60.1732387876999.rhbxDvdpYIjbYg5dkKEm2ZgFpXtjiz7l-My2Om-1xhA=.webp (1.0 KB)
+                📄 60.1734371939712.rhbxDvdpYIjbYg5dkKEm2ZgFpXtjiz7l-My2Om-1xhA=.webp (1.0 KB)
             📁 hzs8RhfJsVTXLLcnsLzk79gOknGMLKCblgsyzOYw2F8=/
                 📄 3600.1730033946260.l9wDiy3qUk+16QC7HSGI6F66LFq2ponsOvYnnUFxLZg=.webp (22.0 KB)
             📁 Ia3j7XLN5ILxL0k5l7QakSHgi9UUmAWU1bf08TA1LFY=/
@@ -128,13 +130,13 @@ Scanned on: 2024-12-16 21:09:22
             📁 IGix7KIJfRVqPyTSWa+IZfMHfiDaKFIuyggfDyo-ox0=/
                 📄 3600.1730026446239.CmN9C8bnyZI4vFCRhTqVTNSepGcUGhiNzisLnnIX+WU=.webp (88.9 KB)
             📁 jEyJ+YrxbOQWLlMcQIGGccNY8TaLvA3CRyxlfZaV8R4=/
-                📄 60.1732387871617.Y6nRucJjrxsbbqG2jPm7SrPBhG6Ru7fFo4PoDKci1rU=.webp (32.8 KB)
+                📄 60.1734373909752.Y6nRucJjrxsbbqG2jPm7SrPBhG6Ru7fFo4PoDKci1rU=.webp (32.8 KB)
             📁 JXi3AHybcq85IPzc6rIaIDfSNmHpNno0CKAfDQ1AB54=/
                 📄 3600.1730042385471.7BkARJR0qJKuTbMXlwJvKsaDpgiYc1dcBHoOv1n5Vd0=.webp (107.9 KB)
             📁 KlydqfIXmSnfWA+hf1fHaviZXeot7ATU+LlZABtHgrQ=/
                 📄 60.1732403169806.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 KoNXU+TP5eGEtXMnyJhrBaDnWbLag5vVl7sBSqwgSMY=/
-                📄 60.1734357281603.5RRkVNyKStCFzrkUzUSxA+3hbeIwg51g7GDUv5tkSeI=.webp (81.8 KB)
+                📄 60.1734469882917.5RRkVNyKStCFzrkUzUSxA+3hbeIwg51g7GDUv5tkSeI=.webp (81.8 KB)
             📁 kUv1SDQuJ79K41sPFYCSbZFE5Yg8yRz18R72yeUCV00=/
                 📄 3600.1729954250298.YG9GzQsaZ5ZlL7Ja00oZdxJeQO3LvvCDOJsGhcO9014=.webp (24.0 KB)
             📁 lFpUnT5QuNzu2y+h9K30gB-60klHjJrd9i0frWQGNy0=/
@@ -142,13 +144,13 @@ Scanned on: 2024-12-16 21:09:22
             📁 LV4usNUmC+BKct9EDu4W6GC5UzfC1BiAIx6BrFnchSU=/
                 📄 60.1731320846646.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 lViyBAwFzvXtQOKm3LP4XC8wR2vEU-71u1J2mQenC5c=/
-                📄 3600.1732043879386.y2b-h1GVQca-IkUxt1DKKEioxgFLae0kmSStZswPyo8=.webp (34.3 KB)
+                📄 3600.1734420964616.y2b-h1GVQca-IkUxt1DKKEioxgFLae0kmSStZswPyo8=.webp (34.3 KB)
             📁 mapTl9AbXHdvMniOp9XMQOkdqlACvCr4ihN3R6kiWWk=/
                 📄 3600.1730002324279.XGVWae7ZQi-ftEBAtR13K9AKjz7qTWHCt8mCs66C8KE=.webp (17.2 KB)
             📁 MgjzxQNgzV++FPuPvrjXvEwZLwgjt55t86h+VoddzGI=/
                 📄 3600.1729953833208.pKfqzZZByXIW7FigSkxKgclrTX3-LSZtgARl7fUxrJA=.webp (84.2 KB)
             📁 mhp9OW4V85Bx5C+1Hnmc2SjxLlLZM+-RdAnO4lCsABU=/
-                📄 60.1734357284347.9+J9zS0SI+lAFKEiT4FLecKQEoUsYIPZ7Idm3weOjCg=.webp (756.0 B)
+                📄 60.1734469797934.9+J9zS0SI+lAFKEiT4FLecKQEoUsYIPZ7Idm3weOjCg=.webp (756.0 B)
             📁 Ml4e1Gj8GzSsvUn0hbCWTMcyhhLAY9T9CCglEAM+ntA=/
                 📄 3600.1729946595771.WrVIMAkAc0TFNv7j3qXwbXoYgnWm052mD-90MKwvUM4=.webp (12.7 KB)
             📁 mS5ZIXHHQxKgn7H6+rIhOz24zn1LclPGQqJKP+YrqfY=/
@@ -174,19 +176,19 @@ Scanned on: 2024-12-16 21:09:22
             📁 QQ4SXhSE877KtXC3y+XVQ5QYe45ER38WSwls+dtKcQ4=/
                 📄 60.1729875728038.fvOd7rNYUbwD0t6lJvHYK62SwuObmoCbf7bgQN5Imn8=.webp (98.7 KB)
             📁 QqSIAdPw+6MGaOj3QTWRPJPbT7etxZg425DxAvGti0M=/
-                📄 60.1731218253389.2IK71BwMpQlgNpewHEYvqaVvl0Y4MA1fOOdHg7vvyxw=.webp (16.8 KB)
+                📄 60.1734373903734.2IK71BwMpQlgNpewHEYvqaVvl0Y4MA1fOOdHg7vvyxw=.webp (16.8 KB)
             📁 r0N2-1HGUvKkCK7TCx75F29aym6U711X0-nn1lO9pos=/
                 📄 3600.1730001824759.UN9TVe1svRDMeLbs1TCYvfE1hOseeyGLxACQa36lZac=.webp (41.9 KB)
             📁 R1D4o-7Fqqq7s-ayEu5lyhZFe6pSDgQgPuwAwrCTdv0=/
-                📄 60.1732387877026.KL4gbrygMTKOqP0nLX0ypzULfnTJiwUCc+oPv95YslU=.webp (1.0 KB)
+                📄 60.1734371938983.KL4gbrygMTKOqP0nLX0ypzULfnTJiwUCc+oPv95YslU=.webp (1.0 KB)
             📁 rEpd2Lx+UJEs1R-Y6iFkRVkp92-mT8vAekLQxXS2Yqw=/
                 📄 60.1731218258391.pgHYaQQYcDkpEBjvU2vy7WdRAoa2eUoUbkT5HrjDATc=.webp (96.3 KB)
             📁 Ru+ElwjXCkiQq0YXzpt4thKUTxi17ZGP0PSeiTszpkk=/
-                📄 3600.1734340556076.ez6cd9ALVL5NSQU-0ZC3HWZUbPSBKUP7FUnGuio7Dpk=.webp (9.7 KB)
+                📄 3600.1734420961929.ez6cd9ALVL5NSQU-0ZC3HWZUbPSBKUP7FUnGuio7Dpk=.webp (9.7 KB)
             📁 RUTumPOr3WZpxsKztl2Ic0-2d23a8CJapLbDJFAvwZ8=/
                 📄 3600.1732538599455.bVwarBIshSUeUq7LHU0pscVwJ71oVNCrYcTPXtSzEzM=.webp (71.3 KB)
             📁 SmobFQi2SN-0zxZaxl1BGjbCdVDar+zH77wNcB--FYc=/
-                📄 60.1732387869226.hSXag3Cf-GOfGxEX0uXFQv7Yfj8N0Gia0k+S4QrvwR0=.webp (42.0 KB)
+                📄 60.1734373915037.hSXag3Cf-GOfGxEX0uXFQv7Yfj8N0Gia0k+S4QrvwR0=.webp (42.0 KB)
             📁 SNSTo2qps1A7yq3N6Enioc8zzkAEvef-q4zv98R0wXc=/
                 📄 3600.1731221815398.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
             📁 Ss42e8s8GDMe8e6CkSNfJ8KFXAjmfnzO85IyKAUSdcw=/
@@ -200,17 +202,17 @@ Scanned on: 2024-12-16 21:09:22
             📁 t+-ZzDg4WHwoivwId1hDLAaUgt+5oWn+DYVqGD6MHi0=/
                 📄 3600.1730001830690.xkQ5FFHGLpEcPe4vXK4Rjjj0uhdWydBrUpLQbxUryMM=.webp (78.0 KB)
             📁 T4RVr1vszeWjiQPRupu0dugghiPGdBdiVHxxGPyoCzg=/
-                📄 60.1734357276322.MnGtBlNlJAi21xGf4LGnHHojcW-15eG8uA62VTwhF4E=.webp (27.1 KB)
+                📄 60.1734365378743.MnGtBlNlJAi21xGf4LGnHHojcW-15eG8uA62VTwhF4E=.webp (27.1 KB)
             📁 T8Ua629PKNWdpzhmpBgf9ZHLwmNvlwWGVgSbOizmqVA=/
-                📄 60.1734357279306.5RRkVNyKStCFzrkUzUSxA+3hbeIwg51g7GDUv5tkSeI=.webp (81.8 KB)
+                📄 60.1734469879951.whkLix8z7eneESry2oIc7Xfo2eMVfIxoAf-33PQR1Mc=.webp (268.0 KB)
             📁 tiU6dpNNHDl8+eG-zLSf-H6WVuw4iJvX78GUcv+FC-w=/
-                📄 3600.1734360819523.ez6cd9ALVL5NSQU-0ZC3HWZUbPSBKUP7FUnGuio7Dpk=.webp (9.7 KB)
+                📄 3600.1734473375317.ez6cd9ALVL5NSQU-0ZC3HWZUbPSBKUP7FUnGuio7Dpk=.webp (9.7 KB)
             📁 TRt6Zl7Wb2cbg+HNSRH3J7Plc900DvT2P58Ol8E6wm4=/
                 📄 60.1730136037410.p3b0xg8yw+sel85FQMmgjLLgnNPQ0U-x-swR526KjX4=.jpeg (458.2 KB)
             📁 tY9jmQQfmnTm9wRhjNSuSWUiFL45BD0cdW6hWjKcF2s=/
                 📄 3600.1731221816039.bVwarBIshSUeUq7LHU0pscVwJ71oVNCrYcTPXtSzEzM=.webp (71.3 KB)
             📁 UGesPxkgXwj6pjjvuwF9j5FJr6GuUOoSCiWOqkQNyOM=/
-                📄 60.1731218252121.wSCim0GCfgqBMZXpyE2ZJvkCiuJ+A2fYOurNmEvxn-0=.webp (11.7 KB)
+                📄 60.1734373893046.5QKaANz6npgnWZLY8arefVuCx-8erOFoVJF1jrwbfVc=.webp (48.6 KB)
             📁 uj0Np+fo8ZlrzZ4YC4nYQ-COHP0cb3g6P5bdmXDOxhc=/
                 📄 60.1731218261555.bQxy7f85UCO48lVubjtiSNAAndXE0-Q+e+s7DIjrzqw=.webp (112.0 KB)
             📁 uKXyg-3m9eyr1oSW5d79vWM9ODi58-rQRfcNP9lRptQ=/
@@ -226,19 +228,19 @@ Scanned on: 2024-12-16 21:09:22
             📁 W9517WUEIxri64kEk1Fc2dhp+KeqDFKrWnSivlDn8YI=/
                 📄 3600.1730026450305.H6LZ7wsDqArFo0pyAGhA2sldRGKwhMJWaBGeEm3sL5g=.webp (68.2 KB)
             📁 xdxQOlDQqKcrYfK3yInCTSBwQb9tjfrlZ-Rj23DpGuc=/
-                📄 60.1731218250883.wSCim0GCfgqBMZXpyE2ZJvkCiuJ+A2fYOurNmEvxn-0=.webp (11.7 KB)
+                📄 60.1734373899153.wSCim0GCfgqBMZXpyE2ZJvkCiuJ+A2fYOurNmEvxn-0=.webp (11.7 KB)
             📁 XlEh+sPlI9Unr5xY+bq-0TrlSESUUsgXlb9owCS2M+I=/
-                📄 60.1732387870350.Y6nRucJjrxsbbqG2jPm7SrPBhG6Ru7fFo4PoDKci1rU=.webp (32.8 KB)
+                📄 60.1734373905833.wEGX3LURYrzsYlIT+YmHoDmv7KTcRNTa2a2lB6fHOJo=.webp (165.4 KB)
             📁 Xvvy5MthtSeNK1-7dGRKKw8EkdNqxQyEtnjv-ESAFmA=/
                 📄 3600.1730044733553.QRO5L2Qx0y4dczRrF+D2NtYDYglwO2lZyMfJzVW2Gbc=.webp (33.9 KB)
             📁 XWIwqOXe+yDzdFr1AR7lGi7JabkYQytvw9amIdREQf4=/
-                📄 60.1734357284332.yWRVu6WTwiFDHQHCub8ykEfa-G2wiT1itEsJS0L1So8=.webp (2.4 KB)
+                📄 60.1734469885260.yWRVu6WTwiFDHQHCub8ykEfa-G2wiT1itEsJS0L1So8=.webp (2.4 KB)
             📁 y1URCUhVFgleQPN3gMQuX77TQ7SkN0dEQy4HGL3IyU0=/
                 📄 3600.1729946681485.DeOSEEqHeUJIXHDPk4duErLZ+hgBrurIjXckUGG9Dzw=.webp (8.5 KB)
             📁 YG-bv29-Szz-+AssFIAXVUQZSsBmKMUA+z6oKTWA+ww=/
                 📄 3600.1729953798139.QS08VkHhMDkPc6zlgE2CawcGu9Vu0uI3IF4CQVSvv0M=.webp (24.4 KB)
             📁 yzGAjGcXAGxahDuVOHQpB41deE6X6WF9mcul6xAm9mc=/
-                📄 60.1734357284319.8oFcPmG29lv+o8GmJ9RHT7j+v2qdVLzxDSDNZn+ctnU=.webp (468.0 B)
+                📄 60.1734441734779.8oFcPmG29lv+o8GmJ9RHT7j+v2qdVLzxDSDNZn+ctnU=.webp (468.0 B)
             📁 zbKoEacJkbnz1Gt+8tobIWjoK7ThxqpCYnY-u7ts9oY=/
                 📄 3600.1730027933139.Ez2KKNYMcCrTsJcl2gKCepPrSqVbJ7ezIG3ZFz7u4n0=.webp (40.6 KB)
             📁 ZQopa4I+aGlRe4K3cadJduuiiGDFsSC+TKgI5MlPtM4=/
@@ -248,30 +250,30 @@ Scanned on: 2024-12-16 21:09:22
                 📁 v7_windows_x86_64_0.106.15/
         📁 webpack/
             📁 client-development/
-                📄 0.pack.gz (2.4 KB)
-                📄 1.pack.gz (13.2 KB)
-                📄 10.pack.gz (51.1 KB)
-                📄 11.pack.gz (9.7 KB)
-                📄 12.pack.gz (36.9 KB)
-                📄 13.pack.gz (6.6 KB)
-                📄 14.pack.gz (4.1 MB)
-                📄 15.pack.gz (6.7 MB)
-                📄 16.pack.gz (75.9 KB)
-                📄 17.pack.gz (213.2 KB)
-                📄 18.pack.gz (2.3 KB)
-                📄 19.pack.gz (889.6 KB)
-                📄 2.pack.gz (20.6 MB)
-                📄 20.pack.gz (3.2 KB)
-                📄 21.pack.gz (7.1 MB)
-                📄 22.pack.gz (3.3 MB)
-                📄 23.pack.gz (10.5 MB)
-                📄 24.pack.gz (5.5 MB)
-                📄 25.pack.gz (1.6 MB)
-                📄 26.pack.gz (34.8 KB)
-                📄 27.pack.gz (208.6 KB)
-                📄 28.pack.gz (2.5 KB)
+                📄 0.pack.gz (286.7 KB)
+                📄 1.pack.gz (2.4 KB)
+                📄 10.pack.gz (2.4 MB)
+                📄 11.pack.gz (8.7 KB)
+                📄 12.pack.gz (4.3 MB)
+                📄 13.pack.gz (6.8 MB)
+                📄 14.pack.gz (20.7 MB)
+                📄 15.pack.gz (2.2 MB)
+                📄 16.pack.gz (1.3 KB)
+                📄 17.pack.gz (1.6 MB)
+                📄 18.pack.gz (2.5 MB)
+                📄 19.pack.gz (6.0 MB)
+                📄 2.pack.gz (7.0 KB)
+                📄 20.pack.gz (17.4 MB)
+                📄 21.pack.gz (4.4 MB)
+                📄 22.pack.gz (104.7 KB)
+                📄 23.pack.gz (7.6 KB)
+                📄 24.pack.gz (12.5 KB)
+                📄 25.pack.gz (9.0 MB)
+                📄 26.pack.gz (20.6 MB)
+                📄 27.pack.gz (317.3 KB)
+                📄 28.pack.gz (743.4 KB)
                 📄 29.pack.gz (751.1 KB)
-                📄 3.pack.gz (4.6 MB)
+                📄 3.pack.gz (2.6 KB)
                 📄 30.pack.gz (1.7 MB)
                 📄 31.pack.gz (1.3 MB)
                 📄 32.pack.gz (519.5 KB)
@@ -282,184 +284,184 @@ Scanned on: 2024-12-16 21:09:22
                 📄 37.pack.gz (2.4 MB)
                 📄 38.pack.gz (717.7 KB)
                 📄 39.pack.gz (392.5 KB)
-                📄 4.pack.gz (6.2 MB)
+                📄 4.pack.gz (2.4 KB)
                 📄 40.pack.gz (566.0 KB)
                 📄 41.pack.gz (7.3 MB)
                 📄 42.pack.gz (735.3 KB)
                 📄 43.pack.gz (3.2 MB)
-                📄 5.pack.gz (5.1 MB)
-                📄 6.pack.gz (365.9 KB)
-                📄 7.pack.gz (726.5 KB)
-                📄 8.pack.gz (1.1 MB)
-                📄 9.pack.gz (1.5 KB)
-                📄 index.pack.gz (832.6 KB)
-                📄 index.pack.gz.old (832.6 KB)
+                📄 5.pack.gz (4.1 KB)
+                📄 6.pack.gz (2.6 KB)
+                📄 7.pack.gz (3.4 MB)
+                📄 8.pack.gz (213.2 KB)
+                📄 9.pack.gz (1.8 MB)
+                📄 index.pack.gz (978.6 KB)
+                📄 index.pack.gz.old (978.7 KB)
             📁 client-development-fallback/
                 📄 0.pack.gz (11.0 MB)
                 📄 1.pack.gz (5.2 KB)
-                📄 index.pack.gz (78.2 KB)
-                📄 index.pack.gz.old (76.5 KB)
+                📄 index.pack.gz (77.7 KB)
+                📄 index.pack.gz.old (80.6 KB)
             📁 client-production/
-                📄 0.pack (73.2 MB)
+                📄 0.pack (49.1 MB)
                 📄 1.pack (116.6 KB)
-                📄 10.pack (207.1 KB)
-                📄 11.pack (2.8 MB)
-                📄 12.pack (4.7 MB)
-                📄 13.pack (1.5 KB)
-                📄 14.pack (10.1 MB)
-                📄 15.pack (856.1 KB)
-                📄 16.pack (21.4 MB)
-                📄 17.pack (44.8 MB)
-                📄 2.pack (354.9 KB)
-                📄 3.pack (45.0 KB)
+                📄 10.pack (3.2 MB)
+                📄 11.pack (9.3 MB)
+                📄 12.pack (6.9 KB)
+                📄 13.pack (8.4 MB)
+                📄 14.pack (269.3 KB)
+                📄 15.pack (255.8 KB)
+                📄 16.pack (15.1 KB)
+                📄 17.pack (4.1 MB)
+                📄 18.pack (139.4 KB)
+                📄 19.pack (36.0 MB)
+                📄 2.pack (146.9 KB)
+                📄 20.pack (8.4 MB)
+                📄 21.pack (711.0 KB)
+                📄 22.pack (8.1 KB)
+                📄 3.pack (20.9 KB)
                 📄 4.pack (16.9 KB)
-                📄 5.pack (34.6 MB)
+                📄 5.pack (16.1 MB)
                 📄 6.pack (14.7 MB)
-                📄 7.pack (2.7 MB)
-                📄 8.pack (3.5 MB)
-                📄 9.pack (6.1 MB)
-                📄 index.pack (26.6 MB)
-                📄 index.pack.old (26.4 MB)
+                📄 7.pack (1.4 MB)
+                📄 8.pack (4.7 MB)
+                📄 9.pack (50.0 KB)
+                📄 index.pack (27.6 MB)
+                📄 index.pack.old (27.6 MB)
             📁 edge-server-development/
                 📄 0.pack.gz (1.4 MB)
-                📄 1.pack.gz (6.8 KB)
+                📄 1.pack.gz (6.9 KB)
                 📄 2.pack.gz (6.7 KB)
                 📄 3.pack.gz (961.6 KB)
                 📄 4.pack.gz (19.8 KB)
                 📄 5.pack.gz (212.8 KB)
-                📄 index.pack.gz (58.4 KB)
-                📄 index.pack.gz.old (61.7 KB)
+                📄 index.pack.gz (39.2 KB)
+                📄 index.pack.gz.old (45.6 KB)
             📁 edge-server-production/
-                📄 0.pack (5.8 MB)
-                📄 1.pack (22.2 KB)
+                📄 0.pack (5.2 MB)
+                📄 1.pack (851.6 KB)
                 📄 2.pack (1.2 MB)
                 📄 3.pack (22.1 KB)
                 📄 4.pack (3.6 KB)
                 📄 5.pack (4.8 MB)
                 📄 6.pack (830.8 KB)
-                📄 index.pack (423.7 KB)
-                📄 index.pack.old (366.9 KB)
+                📄 index.pack (426.2 KB)
+                📄 index.pack.old (362.6 KB)
             📁 server-development/
-                📄 0.pack.gz (165.7 KB)
-                📄 1.pack.gz (3.2 KB)
-                📄 10.pack.gz (249.6 KB)
-                📄 11.pack.gz (4.2 MB)
-                📄 12.pack.gz (3.3 MB)
-                📄 13.pack.gz (423.4 KB)
-                📄 14.pack.gz (1.6 MB)
-                📄 15.pack.gz (2.6 MB)
-                📄 16.pack.gz (4.2 KB)
-                📄 17.pack.gz (185.2 KB)
-                📄 18.pack.gz (648.2 KB)
-                📄 19.pack.gz (329.1 KB)
-                📄 2.pack.gz (1.6 MB)
-                📄 20.pack.gz (646.7 KB)
-                📄 21.pack.gz (391.0 B)
-                📄 22.pack.gz (4.4 MB)
-                📄 23.pack.gz (413.6 KB)
-                📄 24.pack.gz (4.0 MB)
-                📄 25.pack.gz (6.1 KB)
-                📄 26.pack.gz (39.0 KB)
-                📄 27.pack.gz (15.4 KB)
-                📄 28.pack.gz (278.1 KB)
-                📄 29.pack.gz (2.1 KB)
-                📄 3.pack.gz (4.7 KB)
+                📄 0.pack.gz (13.9 KB)
+                📄 1.pack.gz (2.3 KB)
+                📄 10.pack.gz (143.1 KB)
+                📄 11.pack.gz (547.7 KB)
+                📄 12.pack.gz (5.7 MB)
+                📄 13.pack.gz (485.3 KB)
+                📄 14.pack.gz (14.0 KB)
+                📄 15.pack.gz (7.7 MB)
+                📄 16.pack.gz (810.3 KB)
+                📄 17.pack.gz (6.1 MB)
+                📄 18.pack.gz (3.7 MB)
+                📄 19.pack.gz (272.6 KB)
+                📄 2.pack.gz (53.5 KB)
+                📄 20.pack.gz (1.7 MB)
+                📄 21.pack.gz (19.1 KB)
+                📄 22.pack.gz (2.3 MB)
+                📄 23.pack.gz (332.7 KB)
+                📄 24.pack.gz (4.2 KB)
+                📄 25.pack.gz (2.6 MB)
+                📄 26.pack.gz (551.9 KB)
+                📄 27.pack.gz (858.9 KB)
+                📄 28.pack.gz (6.8 MB)
+                📄 29.pack.gz (888.9 KB)
+                📄 3.pack.gz (49.5 KB)
                 📄 30.pack.gz (1.2 MB)
                 📄 31.pack.gz (99.4 KB)
                 📄 32.pack.gz (1.2 KB)
-                📄 4.pack.gz (49.9 KB)
-                📄 5.pack.gz (2.5 MB)
-                📄 6.pack.gz (66.2 KB)
-                📄 7.pack.gz (39.6 KB)
-                📄 8.pack.gz (6.1 MB)
-                📄 9.pack.gz (515.8 KB)
-                📄 index.pack.gz (786.5 KB)
-                📄 index.pack.gz.old (786.5 KB)
+                📄 4.pack.gz (919.8 KB)
+                📄 5.pack.gz (2.0 MB)
+                📄 6.pack.gz (145.6 KB)
+                📄 7.pack.gz (156.4 KB)
+                📄 8.pack.gz (390.0 B)
+                📄 9.pack.gz (1.9 MB)
+                📄 index.pack.gz (1.2 MB)
+                📄 index.pack.gz.old (1.2 MB)
             📁 server-production/
-                📄 0.pack (99.4 MB)
-                📄 1.pack (19.8 KB)
-                📄 10.pack (6.7 MB)
-                📄 11.pack (17.7 MB)
-                📄 12.pack (9.5 MB)
-                📄 13.pack (15.5 MB)
-                📄 14.pack (7.5 MB)
-                📄 15.pack (101.2 KB)
+                📄 0.pack (57.7 MB)
+                📄 1.pack (11.4 MB)
+                📄 10.pack (3.3 MB)
+                📄 11.pack (12.7 KB)
+                📄 12.pack (30.3 MB)
+                📄 13.pack (66.9 KB)
+                📄 14.pack (72.0 MB)
+                📄 15.pack (315.2 KB)
                 📄 16.pack (45.2 MB)
                 📄 17.pack (24.4 KB)
                 📄 2.pack (76.5 KB)
-                📄 3.pack (37.3 MB)
+                📄 3.pack (9.5 MB)
                 📄 4.pack (12.9 MB)
-                📄 5.pack (3.2 MB)
-                📄 6.pack (13.5 KB)
-                📄 7.pack (9.2 MB)
-                📄 8.pack (32.4 MB)
-                📄 9.pack (37.2 KB)
-                📄 index.pack (31.3 MB)
-                📄 index.pack.old (30.8 MB)
-        📄 .tsbuildinfo (235.8 KB)
+                📄 5.pack (5.2 MB)
+                📄 6.pack (3.2 MB)
+                📄 7.pack (203.5 KB)
+                📄 8.pack (2.4 MB)
+                📄 9.pack (531.1 KB)
+                📄 index.pack (46.9 MB)
+                📄 index.pack.old (43.6 MB)
+        📄 .tsbuildinfo (249.4 KB)
     📁 server/
         📁 app/
             📁 (auth)/
                 📁 mentor/
-                    📄 page.js (262.3 KB)
-                    📄 page_client-reference-manifest.js (15.9 KB)
+                    📄 page.js (266.3 KB)
+                    📄 page_client-reference-manifest.js (15.2 KB)
             📁 (client)/
                 📁 dashboard/
-                    📁 career/
-                        📁 results/
-                            📄 page.js (436.8 KB)
-                            📄 page_client-reference-manifest.js (16.3 KB)
-                        📄 page.js (481.5 KB)
-                        📄 page_client-reference-manifest.js (16.1 KB)
                     📁 consultation/
                         📁 [mentorId]/
-                            📄 page.js (549.0 KB)
-                            📄 page_client-reference-manifest.js (16.4 KB)
+                            📄 page.js (527.9 KB)
+                            📄 page_client-reference-manifest.js (15.7 KB)
                         📁 available-mentors/
-                            📄 page.js (462.5 KB)
-                            📄 page_client-reference-manifest.js (16.4 KB)
-                        📄 page.js (438.2 KB)
-                        📄 page_client-reference-manifest.js (16.1 KB)
-                    📁 events/
-                        📄 page.js (404.2 KB)
-                        📄 page_client-reference-manifest.js (16.1 KB)
-                    📄 page.js (483.8 KB)
-                    📄 page_client-reference-manifest.js (15.9 KB)
+                            📄 page.js (441.1 KB)
+                            📄 page_client-reference-manifest.js (15.7 KB)
+                        📄 page.js (569.5 KB)
+                        📄 page_client-reference-manifest.js (15.4 KB)
+                    📄 page.js (462.4 KB)
+                    📄 page_client-reference-manifest.js (15.2 KB)
             📁 (mentor)/
                 📁 dashboard-mentor/
+                    📁 clients/
+                        📄 page.js (370.7 KB)
+                        📄 page_client-reference-manifest.js (15.4 KB)
                     📁 consultation/
-                        📄 page.js (598.1 KB)
-                        📄 page_client-reference-manifest.js (16.1 KB)
-                    📄 page.js (362.8 KB)
-                    📄 page_client-reference-manifest.js (15.9 KB)
+                        📄 page.js (680.6 KB)
+                        📄 page_client-reference-manifest.js (15.4 KB)
+                    📄 page.js (367.1 KB)
+                    📄 page_client-reference-manifest.js (15.1 KB)
             📁 (public)/
-                📄 page.js (566.7 KB)
-                📄 page_client-reference-manifest.js (15.7 KB)
-            📁 _not-found/
-                📄 page.js (160.6 KB)
-                📄 page_client-reference-manifest.js (15.8 KB)
+                📄 page.js (567.2 KB)
+                📄 page_client-reference-manifest.js (15.0 KB)
             📁 api/
                 📁 auth/
+                    📁 [...nextauth]/
+                        📄 route.js (65.9 KB)
                     📁 callback/
                         📁 google/
                             📄 route.js (46.4 KB)
                     📁 google/
                         📄 route.js (21.0 KB)
+                📁 chat/
+                    📁 sse/
+                        📄 route.js (35.3 KB)
+                    📄 route.js (55.7 KB)
                 📁 client/
+                    📁 auth/
+                        📁 logout/
+                            📄 route.js (34.1 KB)
                     📁 career-assessment/
-                        📁 [assessmentId]/
-                            📁 recomendations/
-                                📄 route.js (41.2 KB)
                         📁 check/
                             📄 route.js (38.2 KB)
-                        📁 latest/
-                            📄 route.js (38.4 KB)
                     📁 consultations/
                         📁 [mentorId]/
                             📄 route.js (43.7 KB)
                         📁 book/
-                            📄 route.js (44.0 KB)
-                        📄 route.js (42.6 KB)
+                            📄 route.js (43.0 KB)
+                        📄 route.js (45.3 KB)
                     📁 events/
                         📄 route.js (19.2 KB)
                     📁 mentors/
@@ -468,30 +470,39 @@ Scanned on: 2024-12-16 21:09:22
                     📁 auth/
                         📁 login/
                             📄 route.js (40.7 KB)
+                    📁 clients/
+                        📄 route.js (60.3 KB)
                     📁 consultations/
-                        📄 route.js (52.8 KB)
+                        📁 [id]/
+                            📄 route.js (51.7 KB)
+                        📄 route.js (53.4 KB)
                     📁 notifications/
                         📄 route.js (34.7 KB)
                     📁 slots/
                         📄 route.js (44.4 KB)
                 📁 public/
                     📁 events/
-                        📄 route.js (19.2 KB)
+                        📄 route.js (24.4 KB)
+            📁 favicon.ico/
+                📄 route.js (228.8 KB)
         📁 static/
             📁 webpack/
                 📄 633457081244afec._.hot-update.json (22.0 B)
         📁 vendor-chunks/
-            📄 @babel.js (37.6 KB)
+            📄 @babel.js (189.5 KB)
             📄 @floating-ui.js (232.9 KB)
             📄 @hookform.js (8.7 KB)
+            📄 @next-auth.js (26.2 KB)
+            📄 @panva.js (12.0 KB)
             📄 @radix-ui.js (1.5 MB)
             📄 @swc.js (12.1 KB)
             📄 @tanstack.js (1.6 MB)
             📄 aria-hidden.js (19.1 KB)
             📄 bcryptjs.js (154.1 KB)
-            📄 class-variance-authority.js (10.3 KB)
+            📄 class-variance-authority.js (19.9 KB)
             📄 classnames.js (5.6 KB)
-            📄 clsx.js (2.7 KB)
+            📄 clsx.js (4.8 KB)
+            📄 cookie.js (23.2 KB)
             📄 date-fns.js (1.2 MB)
             📄 embla-carousel-react.js (6.7 KB)
             📄 embla-carousel-reactive-utils.js (6.4 KB)
@@ -499,17 +510,24 @@ Scanned on: 2024-12-16 21:09:22
             📄 framer-motion.js (1.4 MB)
             📄 get-nonce.js (2.5 KB)
             📄 jose.js (201.8 KB)
-            📄 lucide-react.js (136.4 KB)
-            📄 next.js (2.4 MB)
+            📄 lucide-react.js (170.5 KB)
+            📄 next-auth.js (1.1 MB)
+            📄 next.js (2.6 MB)
+            📄 oauth.js (102.1 KB)
+            📄 oidc-token-hash.js (11.7 KB)
+            📄 openid-client.js (1004.6 KB)
+            📄 preact-render-to-string.js (23.9 KB)
+            📄 preact.js (30.3 KB)
             📄 react-day-picker.js (272.8 KB)
             📄 react-hook-form.js (256.7 KB)
             📄 react-style-singleton.js (13.7 KB)
-            📄 tailwind-merge.js (195.8 KB)
+            📄 tailwind-merge.js (390.9 KB)
             📄 tslib.js (47.3 KB)
             📄 use-callback-ref.js (14.4 KB)
             📄 use-sidecar.js (11.8 KB)
+            📄 yallist.js (25.7 KB)
             📄 zod.js (394.3 KB)
-        📄 app-paths-manifest.json (682.0 B)
+        📄 app-paths-manifest.json (1.3 KB)
         📄 edge-runtime-webpack.js (44.0 KB)
         📄 interception-route-rewrite-manifest.js (47.0 B)
         📄 middleware-build-manifest.js (474.0 B)
@@ -531,32 +549,26 @@ Scanned on: 2024-12-16 21:09:22
                     📄 layout.js (1.7 KB)
                 📁 (client)/
                     📁 dashboard/
-                        📁 career/
-                            📁 results/
-                                📄 page.js (2.2 MB)
-                            📄 page.js (2.9 MB)
                         📁 consultation/
                             📁 [mentorId]/
                                 📄 page.js (4.1 MB)
                             📁 available-mentors/
                                 📄 page.js (2.9 MB)
-                            📄 page.js (2.9 MB)
-                        📁 events/
-                            📄 page.js (2.2 MB)
+                            📄 page.js (3.9 MB)
                         📄 page.js (2.5 MB)
-                    📄 layout.js (2.5 MB)
+                    📄 layout.js (2.2 MB)
                 📁 (mentor)/
                     📁 dashboard-mentor/
+                        📁 clients/
+                            📄 page.js (2.0 MB)
                         📁 consultation/
-                            📄 page.js (4.9 MB)
+                            📄 page.js (5.2 MB)
                         📄 page.js (1.7 KB)
                     📄 layout.js (2.4 MB)
                 📁 (public)/
                     📄 layout.js (2.1 MB)
                     📄 page.js (2.3 MB)
-                📁 _not-found/
-                    📄 page.js (1.7 KB)
-                📄 layout.js (1.1 MB)
+                📄 layout.js (1.4 MB)
                 📄 loading.js (1.6 MB)
                 📄 not-found.js (2.1 MB)
             📄 _app-pages-browser_node_modules_tanstack_query-devtools_build_DevtoolsComponent_ACWU3NT2_js.js (1.2 MB)
@@ -567,7 +579,7 @@ Scanned on: 2024-12-16 21:09:22
             📄 webpack.js (55.2 KB)
         📁 css/
             📁 app/
-                📄 layout.css (76.9 KB)
+                📄 layout.css (96.5 KB)
         📁 development/
             📄 _buildManifest.js (161.0 B)
             📄 _ssgManifest.js (76.0 B)
@@ -584,46 +596,70 @@ Scanned on: 2024-12-16 21:09:22
                 📁 (client)/
                     📁 dashboard/
                         📁 consultation/
-                            📁 [mentorId]/
-                                📄 page.b667e53b2efb9e0e.hot-update.js (49.4 KB)
-                📄 layout.09664741026c6c96.hot-update.js (1.6 KB)
-                📄 layout.3a89fb1f9a3bb119.hot-update.js (1.6 KB)
-                📄 layout.7a8bfef0ee18ceb9.hot-update.js (1.6 KB)
-                📄 layout.af61b4e263d57500.hot-update.js (1.6 KB)
-                📄 layout.b667e53b2efb9e0e.hot-update.js (1.6 KB)
-            📄 09664741026c6c96.webpack.hot-update.json (44.0 B)
-            📄 1124b00936e51bb7.webpack.hot-update.json (31.0 B)
-            📄 3a89fb1f9a3bb119.webpack.hot-update.json (44.0 B)
-            📄 3d1ce34b7b98591b.webpack.hot-update.json (31.0 B)
-            📄 4b68323b91f13950.webpack.hot-update.json (31.0 B)
+                            📄 page.17161d0ab20b9404.hot-update.js (29.5 KB)
+                            📄 page.19f4af72afdfdb46.hot-update.js (30.9 KB)
+                            📄 page.4153ad6940b6c92e.hot-update.js (26.4 KB)
+                            📄 page.4740c79b60727e35.hot-update.js (12.4 KB)
+                            📄 page.5826e2cdb9405f30.hot-update.js (29.2 KB)
+                            📄 page.5fd0149b5f4ed2d9.hot-update.js (31.5 KB)
+                            📄 page.88512b5d7d1337bf.hot-update.js (31.3 KB)
+                            📄 page.9ff47d6ba758bf30.hot-update.js (17.0 KB)
+                📁 (mentor)/
+                    📁 dashboard-mentor/
+                        📁 consultation/
+                            📄 page.17161d0ab20b9404.hot-update.js (29.5 KB)
+                            📄 page.19f4af72afdfdb46.hot-update.js (30.9 KB)
+                            📄 page.4153ad6940b6c92e.hot-update.js (26.4 KB)
+                            📄 page.4740c79b60727e35.hot-update.js (12.4 KB)
+                            📄 page.5826e2cdb9405f30.hot-update.js (29.2 KB)
+                            📄 page.5fd0149b5f4ed2d9.hot-update.js (31.5 KB)
+                            📄 page.88512b5d7d1337bf.hot-update.js (31.3 KB)
+                            📄 page.9ff47d6ba758bf30.hot-update.js (17.0 KB)
+                📄 layout.17161d0ab20b9404.hot-update.js (1.6 KB)
+                📄 layout.19f4af72afdfdb46.hot-update.js (1.6 KB)
+                📄 layout.4153ad6940b6c92e.hot-update.js (1.6 KB)
+                📄 layout.4740c79b60727e35.hot-update.js (1.6 KB)
+                📄 layout.5826e2cdb9405f30.hot-update.js (1.6 KB)
+                📄 layout.5f5a092f00896dbc.hot-update.js (1.6 KB)
+                📄 layout.5fd0149b5f4ed2d9.hot-update.js (1.6 KB)
+                📄 layout.742985abd327bd04.hot-update.js (1.6 KB)
+                📄 layout.88512b5d7d1337bf.hot-update.js (1.6 KB)
+                📄 layout.9ff47d6ba758bf30.hot-update.js (1.6 KB)
+            📄 01e8cb278e84cb6c.webpack.hot-update.json (31.0 B)
+            📄 17161d0ab20b9404.webpack.hot-update.json (137.0 B)
+            📄 19f4af72afdfdb46.webpack.hot-update.json (137.0 B)
+            📄 4153ad6940b6c92e.webpack.hot-update.json (137.0 B)
+            📄 4478ee6a13e85466.webpack.hot-update.json (31.0 B)
+            📄 4740c79b60727e35.webpack.hot-update.json (137.0 B)
+            📄 5826e2cdb9405f30.webpack.hot-update.json (137.0 B)
+            📄 5f5a092f00896dbc.webpack.hot-update.json (44.0 B)
+            📄 5fd0149b5f4ed2d9.webpack.hot-update.json (137.0 B)
             📄 633457081244afec._.hot-update.json (22.0 B)
-            📄 7a8bfef0ee18ceb9.webpack.hot-update.json (44.0 B)
-            📄 7fecda2d69802f27.webpack.hot-update.json (31.0 B)
-            📄 9e456b38423428e7.webpack.hot-update.json (31.0 B)
-            📄 af61b4e263d57500.webpack.hot-update.json (44.0 B)
-            📄 b667e53b2efb9e0e.webpack.hot-update.json (98.0 B)
-            📄 be6bb2083ca278f4.webpack.hot-update.json (31.0 B)
-            📄 cb100942a139683d.webpack.hot-update.json (31.0 B)
-            📄 d5a8167c60857c5d.webpack.hot-update.json (31.0 B)
-            📄 d998ca6fc0f8eacb.webpack.hot-update.json (31.0 B)
-            📄 e04b624791d4c828.webpack.hot-update.json (31.0 B)
-            📄 f1e04a680f7c4d69.webpack.hot-update.json (31.0 B)
-            📄 webpack.09664741026c6c96.hot-update.js (858.0 B)
-            📄 webpack.1124b00936e51bb7.hot-update.js (858.0 B)
-            📄 webpack.3a89fb1f9a3bb119.hot-update.js (858.0 B)
-            📄 webpack.3d1ce34b7b98591b.hot-update.js (858.0 B)
-            📄 webpack.4b68323b91f13950.hot-update.js (858.0 B)
-            📄 webpack.7a8bfef0ee18ceb9.hot-update.js (858.0 B)
-            📄 webpack.7fecda2d69802f27.hot-update.js (858.0 B)
-            📄 webpack.9e456b38423428e7.hot-update.js (858.0 B)
-            📄 webpack.af61b4e263d57500.hot-update.js (858.0 B)
-            📄 webpack.b667e53b2efb9e0e.hot-update.js (858.0 B)
-            📄 webpack.be6bb2083ca278f4.hot-update.js (858.0 B)
-            📄 webpack.cb100942a139683d.hot-update.js (858.0 B)
-            📄 webpack.d5a8167c60857c5d.hot-update.js (858.0 B)
-            📄 webpack.d998ca6fc0f8eacb.hot-update.js (858.0 B)
-            📄 webpack.e04b624791d4c828.hot-update.js (858.0 B)
-            📄 webpack.f1e04a680f7c4d69.hot-update.js (858.0 B)
+            📄 742985abd327bd04.webpack.hot-update.json (44.0 B)
+            📄 88512b5d7d1337bf.webpack.hot-update.json (137.0 B)
+            📄 9fc6940d037767b2.webpack.hot-update.json (31.0 B)
+            📄 9ff47d6ba758bf30.webpack.hot-update.json (137.0 B)
+            📄 a5f923672a05ab5b.webpack.hot-update.json (31.0 B)
+            📄 af8e1871e975d463.webpack.hot-update.json (31.0 B)
+            📄 ef4ee1d3dae740bf.webpack.hot-update.json (31.0 B)
+            📄 face5a1b54d09e2c.webpack.hot-update.json (31.0 B)
+            📄 webpack.01e8cb278e84cb6c.hot-update.js (858.0 B)
+            📄 webpack.17161d0ab20b9404.hot-update.js (858.0 B)
+            📄 webpack.19f4af72afdfdb46.hot-update.js (858.0 B)
+            📄 webpack.4153ad6940b6c92e.hot-update.js (858.0 B)
+            📄 webpack.4478ee6a13e85466.hot-update.js (858.0 B)
+            📄 webpack.4740c79b60727e35.hot-update.js (858.0 B)
+            📄 webpack.5826e2cdb9405f30.hot-update.js (858.0 B)
+            📄 webpack.5f5a092f00896dbc.hot-update.js (858.0 B)
+            📄 webpack.5fd0149b5f4ed2d9.hot-update.js (858.0 B)
+            📄 webpack.742985abd327bd04.hot-update.js (858.0 B)
+            📄 webpack.88512b5d7d1337bf.hot-update.js (858.0 B)
+            📄 webpack.9fc6940d037767b2.hot-update.js (858.0 B)
+            📄 webpack.9ff47d6ba758bf30.hot-update.js (858.0 B)
+            📄 webpack.a5f923672a05ab5b.hot-update.js (858.0 B)
+            📄 webpack.af8e1871e975d463.hot-update.js (858.0 B)
+            📄 webpack.ef4ee1d3dae740bf.hot-update.js (858.0 B)
+            📄 webpack.face5a1b54d09e2c.hot-update.js (858.0 B)
     📁 types/
         📁 app/
             📁 (auth)/
@@ -632,22 +668,18 @@ Scanned on: 2024-12-16 21:09:22
                 📄 layout.ts (3.4 KB)
             📁 (client)/
                 📁 dashboard/
-                    📁 career/
-                        📁 results/
-                            📄 page.ts (3.5 KB)
-                        📄 page.ts (3.5 KB)
                     📁 consultation/
                         📁 [mentorId]/
                             📄 page.ts (3.5 KB)
                         📁 available-mentors/
                             📄 page.ts (3.6 KB)
                         📄 page.ts (3.5 KB)
-                    📁 events/
-                        📄 page.ts (3.5 KB)
                     📄 page.ts (3.5 KB)
                 📄 layout.ts (3.4 KB)
             📁 (mentor)/
                 📁 dashboard-mentor/
+                    📁 clients/
+                        📄 page.ts (3.5 KB)
                     📁 consultation/
                         📄 page.ts (3.5 KB)
                     📄 page.ts (3.5 KB)
@@ -657,19 +689,23 @@ Scanned on: 2024-12-16 21:09:22
                 📄 page.ts (3.4 KB)
             📁 api/
                 📁 auth/
+                    📁 [...nextauth]/
+                        📄 route.ts (8.3 KB)
                     📁 callback/
                         📁 google/
                             📄 route.ts (8.3 KB)
                     📁 google/
                         📄 route.ts (8.3 KB)
+                📁 chat/
+                    📁 sse/
+                        📄 route.ts (8.3 KB)
+                    📄 route.ts (8.3 KB)
                 📁 client/
+                    📁 auth/
+                        📁 logout/
+                            📄 route.ts (8.3 KB)
                     📁 career-assessment/
-                        📁 [assessmentId]/
-                            📁 recomendations/
-                                📄 route.ts (8.4 KB)
                         📁 check/
-                            📄 route.ts (8.4 KB)
-                        📁 latest/
                             📄 route.ts (8.4 KB)
                     📁 consultations/
                         📁 [mentorId]/
@@ -685,7 +721,11 @@ Scanned on: 2024-12-16 21:09:22
                     📁 auth/
                         📁 login/
                             📄 route.ts (8.3 KB)
+                    📁 clients/
+                        📄 route.ts (8.3 KB)
                     📁 consultations/
+                        📁 [id]/
+                            📄 route.ts (8.3 KB)
                         📄 route.ts (8.3 KB)
                     📁 notifications/
                         📄 route.ts (8.3 KB)
@@ -696,11 +736,11 @@ Scanned on: 2024-12-16 21:09:22
                         📄 route.ts (8.3 KB)
             📄 layout.ts (3.4 KB)
         📄 package.json (18.0 B)
-    📄 app-build-manifest.json (3.1 KB)
+    📄 app-build-manifest.json (2.6 KB)
     📄 build-manifest.json (361.0 B)
     📄 package.json (20.0 B)
     📄 react-loadable-manifest.json (703.0 B)
-    📄 trace (2.0 MB)
+    📄 trace (1.2 MB)
 📁 app/
     📁 (admin)/
         📁 dashboard-admin/
@@ -741,12 +781,9 @@ Scanned on: 2024-12-16 21:09:22
                 📄 page.tsx (2.1 KB)
             📁 consultation/
                 📁 [mentorId]/
-                    📄 page.tsx (8.4 KB)
+                    📄 page.tsx (8.5 KB)
                 📁 available-mentors/
                     📄 page.tsx (6.8 KB)
-                📁 consul/
-                    📁 [consultationId]/
-                        📄 page.tsx (7.4 KB)
                 📄 page.tsx (2.9 KB)
             📁 events/
                 📁 [eventId]/
@@ -757,13 +794,10 @@ Scanned on: 2024-12-16 21:09:22
     📁 (mentor)/
         📁 dashboard-mentor/
             📁 clients/
-                📁 [clientId]/
-                    📄 page.tsx (458.0 B)
-                📄 page.tsx (454.0 B)
+                📄 page.tsx (3.1 KB)
             📁 consultation/
-                📁 consul/
-                    📁 [consultationId]/
-                        📄 page.tsx (13.7 KB)
+                📁 [consultationId]/
+                    📄 page.tsx (14.9 KB)
                 📄 page.tsx (8.9 KB)
             📁 events/
                 📁 [eventId]/
@@ -773,15 +807,15 @@ Scanned on: 2024-12-16 21:09:22
         📄 layout.tsx (815.0 B)
     📁 (public)/
         📁 about/
-            📄 page.tsx (463.0 B)
+            📄 page.tsx (546.0 B)
         📁 contact/
-            📄 page.tsx (468.0 B)
+            📄 page.tsx (496.0 B)
         📁 events/
             📁 [eventId]/
                 📄 page.tsx (475.0 B)
             📄 page.tsx (513.0 B)
         📄 layout.tsx (374.0 B)
-        📄 page.tsx (7.4 KB)
+        📄 page.tsx (5.3 KB)
     📁 api/
         📁 admin/
             📁 analytics/
@@ -795,7 +829,7 @@ Scanned on: 2024-12-16 21:09:22
                 📁 analytics/
                     📄 route.ts (2.0 KB)
                 📁 export/
-                    📄 route.ts (1.8 KB)
+                    📄 route.ts (2.5 KB)
                 📁 recent-activities/
                     📄 route.ts (1.6 KB)
             📁 events/
@@ -815,7 +849,9 @@ Scanned on: 2024-12-16 21:09:22
             📁 google/
                 📄 route.ts (1016.0 B)
         📁 chat/
-            📄 route.ts (2.9 KB)
+            📁 sse/
+                📄 route.ts (1.5 KB)
+            📄 route.ts (4.2 KB)
         📁 client/
             📁 auth/
                 📁 login/
@@ -840,8 +876,11 @@ Scanned on: 2024-12-16 21:09:22
                 📁 [mentorId]/
                     📄 route.ts (2.6 KB)
                 📁 book/
-                    📄 route.ts (2.7 KB)
-                📄 route.ts (2.3 KB)
+                    📄 route.ts (2.5 KB)
+                📁 consul/
+                    📁 [consultationId]/
+                        📄 route.ts (1.9 KB)
+                📄 route.ts (3.2 KB)
             📁 events/
                 📁 [eventId]/
                     📄 route.ts (1.0 KB)
@@ -855,10 +894,11 @@ Scanned on: 2024-12-16 21:09:22
                 📁 logout/
                     📄 route.ts (944.0 B)
             📁 clients/
+                📄 route.ts (7.0 KB)
             📁 consultations/
                 📁 [id]/
-                    📄 route.ts (3.9 KB)
-                📄 route.ts (6.3 KB)
+                    📄 route.ts (4.7 KB)
+                📄 route.ts (5.4 KB)
             📁 events/
                 📁 [eventId]/
                     📄 route.ts (1.6 KB)
@@ -875,7 +915,7 @@ Scanned on: 2024-12-16 21:09:22
             📁 events/
                 📁 [eventId]/
                     📄 route.ts (3.3 KB)
-                📄 route.ts (970.0 B)
+                📄 route.ts (2.3 KB)
     📁 fonts/
         📄 GeistMonoVF.woff (66.3 KB)
         📄 GeistVF.woff (64.7 KB)
@@ -886,7 +926,7 @@ Scanned on: 2024-12-16 21:09:22
     📄 layout.tsx (724.0 B)
     📄 loading.tsx (281.0 B)
     📄 not-found.tsx (2.8 KB)
-    📄 providers.tsx (710.0 B)
+    📄 providers.tsx (819.0 B)
 📁 components/
     📁 admin/
         📁 Analytics/
@@ -895,7 +935,7 @@ Scanned on: 2024-12-16 21:09:22
             📄 index.tsx (1.6 KB)
             📄 types.ts (265.0 B)
         📁 dashboard/
-            📄 ExportButton.tsx (792.0 B)
+            📄 ExportButton.tsx (6.8 KB)
             📄 OverviewCards.tsx (1.8 KB)
             📄 RecentActivitiesList.tsx (1.4 KB)
             📄 UserGrowthChart.tsx (1.0 KB)
@@ -915,7 +955,9 @@ Scanned on: 2024-12-16 21:09:22
         📁 consultations/
             📄 BookConsultation.tsx (5.9 KB)
             📄 Chat.tsx (754.0 B)
-            📄 ConsultationList.tsx (3.4 KB)
+            📄 ConsultationChat.tsx (2.6 KB)
+            📄 ConsultationDialog.tsx (7.4 KB)
+            📄 ConsultationList.tsx (6.7 KB)
             📄 DetailMentor.tsx (8.8 KB)
             📄 ListMentor.tsx (3.8 KB)
             📄 Zoom.tsx (1.4 KB)
@@ -934,37 +976,43 @@ Scanned on: 2024-12-16 21:09:22
             📄 Personalisasi.tsx (9.7 KB)
         📄 AuthDialog.tsx (1.3 KB)
         📄 CareerForm.tsx (0.0 B)
-        📄 ClientHeader.tsx (5.7 KB)
-        📄 ClientSidebar.tsx (5.5 KB)
+        📄 ClientHeader.tsx (5.0 KB)
+        📄 ClientSidebar.tsx (5.7 KB)
         📄 LoginForm.tsx (7.3 KB)
         📄 LoginGoogle.tsx (1.7 KB)
         📄 MentorList.tsx (0.0 B)
         📄 RegisterForm.tsx (8.4 KB)
     📁 mentor/
         📁 consultations/
-            📄 ConsultationList.tsx (6.9 KB)
+            📄 ConsultationList.tsx (7.7 KB)
             📄 ConsultationSlotManager.tsx (4.7 KB)
             📄 SlotManagementDialog.tsx (6.5 KB)
             📄 ZoomLinkDialog.tsx (4.0 KB)
+        📁 listClient/
+            📄 ClientList.tsx (3.1 KB)
         📄 ConsultationSchedule.tsx (0.0 B)
         📄 EventDetail.tsx (2.2 KB)
         📄 EventList.tsx (3.9 KB)
         📄 MentorHeader.tsx (8.7 KB)
         📄 MentorLoginForm.tsx (7.5 KB)
-        📄 MentorSidebar.tsx (4.4 KB)
+        📄 MentorSidebar.tsx (4.5 KB)
     📁 public/
+        📄 about.tsx (15.0 KB)
+        📄 contact.tsx (11.2 KB)
         📄 event-detail-skeleton.tsx (908.0 B)
         📄 event-list-skeleton.tsx (1.0 KB)
-        📄 HeroSection.tsx (4.3 KB)
+        📄 FeatureSection.tsx (1.8 KB)
+        📄 HeroSection.tsx (4.2 KB)
         📄 PublicEventDetail.tsx (3.0 KB)
         📄 PublicEventList.tsx (6.5 KB)
         📄 upcoming-event-skeleton.tsx (1.3 KB)
         📄 UpcomingEvents.tsx (3.5 KB)
     📁 shared/
         📁 chat/
-            📄 ChatBox.tsx (3.4 KB)
-            📄 ChatInput.tsx (1.8 KB)
-            📄 ChatMessage.tsx (1.3 KB)
+            📄 ChatBox.tsx (4.0 KB)
+            📄 ChatDialog.tsx (4.7 KB)
+            📄 ChatInput.tsx (2.1 KB)
+            📄 ChatMessage.tsx (1.8 KB)
         📁 consultations/
         📄 FeatureMaintanace.tsx (2.3 KB)
         📄 Footer.tsx (4.0 KB)
@@ -976,7 +1024,7 @@ Scanned on: 2024-12-16 21:09:22
         📄 alert.tsx (1.5 KB)
         📄 avatar.tsx (1.4 KB)
         📄 badge.tsx (1.3 KB)
-        📄 button.tsx (1.9 KB)
+        📄 button.tsx (2.3 KB)
         📄 calendar.tsx (2.5 KB)
         📄 card.tsx (1.8 KB)
         📄 carousel.tsx (6.1 KB)
@@ -1024,8 +1072,8 @@ Scanned on: 2024-12-16 21:09:22
         📄 analytics.ts (780.0 B)
         📄 api.ts (1.4 KB)
         📄 auth.ts (578.0 B)
-        📄 chat.ts (540.0 B)
-        📄 consultations.ts (1.1 KB)
+        📄 chat.ts (1021.0 B)
+        📄 consultations.ts (2.0 KB)
         📄 dashboard.ts (938.0 B)
         📄 google.d.ts (339.0 B)
         📄 index.ts (440.0 B)
@@ -1038,7 +1086,10 @@ Scanned on: 2024-12-16 21:09:22
     📄 notification.ts (881.0 B)
     📄 pkce.ts (441.0 B)
     📄 prisma.ts (394.0 B)
+    📄 socket.ts (1019.0 B)
     📄 utils.ts (2.8 KB)
+📁 pages/
+    📁 api/
 📁 prisma/
     📁 migrations/
         📁 20241024142927_update/
@@ -1051,7 +1102,7 @@ Scanned on: 2024-12-16 21:09:22
         📁 carousel/
             📄 image1.png (15.6 MB)
             📄 image2.png (9.3 MB)
-            📄 image3.png (9.3 MB)
+            📄 image3.png (1.1 MB)
         📄 event-1.png (1.1 MB)
         📄 event-2.png (1.3 MB)
         📄 event-3.png (530.2 KB)
@@ -1064,17 +1115,17 @@ Scanned on: 2024-12-16 21:09:22
 📁 scripts/
     📄 create-admin.js (895.0 B)
     📄 testStorage.js (2.1 KB)
-📄 .env (1.3 KB)
+📄 .env (1.4 KB)
 📄 .env.example (214.0 B)
 📄 .gitignore (420.0 B)
-📄 .hintrc (139.0 B)
+📄 .hintrc (262.0 B)
 📄 components.json (414.0 B)
 📄 file_structure.py (3.6 KB)
 📄 middleware.ts (3.6 KB)
-📄 next-env.d.ts (228.0 B)
+📄 next-env.d.ts (294.0 B)
 📄 next.config.mjs (344.0 B)
-📄 package-lock.json (426.5 KB)
-📄 package.json (2.9 KB)
+📄 package-lock.json (443.3 KB)
+📄 package.json (3.2 KB)
 📄 postcss.config.mjs (135.0 B)
 📄 README.md (1.4 KB)
 📄 tailwind.config.ts (3.3 KB)
